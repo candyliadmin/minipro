@@ -1,0 +1,46 @@
+<view class="gray-page  border-top-10">
+  <view class="block-content-list">
+    <view class="cash-header border-bottom">
+      <view class="flex__space-around">
+        <view class="cash-step text-center active">
+          <view class="step-number"><image src="{{imgUrl}}/page/account/gouxuan.png" style="width:26rpx;height:22rpx;"></image></view>
+          <view>余额提现</view>
+        </view>
+        <view class="cash-step text-center active">
+          <view class="step-number"><image src="{{imgUrl}}/page/account/gouxuan.png" style="width:26rpx;height:22rpx;"></image></view>
+          <view>身份验证</view>
+        </view>
+        <view class="cash-step text-center active">
+          <view class="step-number">3</view>
+          <view>操作成功</view>
+        </view>
+      </view>
+    </view>
+    <view class="cash-body" style="padding-top:45rpx;">
+      <view class="text-center">
+        <icon type="success" size="113"></icon>
+        <view class="bold" style="font-size:36rpx;margin:32rpx 0;">操作成功</view>
+      </view>
+      <view class="flex__space-between cash-info">
+        <view class="cash-info-label lightgray-color">到账金额</view>
+        <view>¥5889.00</view>
+      </view>
+      <view class="flex__space-between cash-info">
+        <view class="cash-info-label lightgray-color">到账账户</view>
+        <view>
+          <view class="text-right">陈一忠</view>
+          <view class="text-right">中国农业银行(1405)</view>
+        </view>
+      </view>
+      <view class="flex__space-between cash-info">
+        <view class="cash-info-label lightgray-color">预计到账时间</view>
+        <view>2019-09-27 18:00</view>
+      </view>
+      <view class="flex__space-between cash-info">
+        <view class="cash-info-label lightgray-color">手续费</view>
+        <view>¥1.00</view>
+      </view>
+    </view>
+    <view class="btn btn-green border-radius" style="margin:108rpx 40rpx 0 40rpx;" bindtap="gotoBack">完成</view>
+  </view>
+</view>

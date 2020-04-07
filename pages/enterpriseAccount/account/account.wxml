@@ -1,0 +1,117 @@
+<!--pages/enterpriseAccount/account/account.wxml-->
+<view>
+  <wxs module="m1">
+    var numberToFixed = function(n) {
+      n = n ? n.toFixed(2) : 0.00;
+      return n;
+    }
+    module.exports.toFixed = numberToFixed;
+  </wxs>
+  <view class="gray-page border-top-10">
+    <view class="account-block">
+      <!-- <view class="account-item border-bottom">
+        <image src="{{imgUrl}}/page/account/yue_zhanghu.png"></image>
+        <view class="money">¥{{accountInfo.availableBalance}}</view>
+        <view class="lightgray-color spantext">账户余额</view>
+      </view> -->
+      <view class="flex__space-around">
+        <view class="flex_start account-item">
+          <image src="{{imgUrl}}/page/account/yue_tixian.png"></image>
+          <view class="text-left padding-l-30">
+            <view class="money">¥{{m1.toFixed(accountInfo.withdrawableBalance)}}</view>
+            <view class="lightgray-color spantext" style="min-width:180rpx;">账户余额</view>
+          </view>
+        </view>
+        <view class="flex__row-center">
+          <view class="btn btn-sm border-radius {{active?'btn-blue':''}}" style="padding:10rpx 0;width:236rpx;" bindtap="gotoCash">提现</view>
+          <view class="text-center lightgray-color spantext" wx-if="{{!active && enable}}">您的账户余额达不到最低提现标准，无法提现</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <block wx:if="{{enable}}">
+    <view class="weui-cells weui-cells_after-title margin-t-10">
+      <navigator url="../accountList/accountList/accountList?type={{accountInfo.accountType}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <image src="{{imgUrl}}/page/account/zhanghuxinxi.png" style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;"></image>
+        </view>
+        <view class="weui-cell__bd">收款账户管理</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+      <navigator url="../bill/bill/bill" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <image src="{{imgUrl}}/page/account/zhangdan.png" style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;"></image>
+        </view>
+        <view class="weui-cell__bd">账单</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+      <navigator url="../settlement/settlement/settlement" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <image src="{{imgUrl}}/page/account/jiesuan.png" style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;"></image>
+        </view>
+        <view class="weui-cell__bd">票款结算汇总</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+      <navigator url="/pages/common/problem/problem" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <image src="{{imgUrl}}/page/account/help.png" style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;"></image>
+        </view>
+        <view class="weui-cell__bd">常见问题</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+    </view>
+    <!-- <view class='row-flex'>
+      <view class="icon-img">
+        <image src='{{imgUrl}}/page/account/zhanghuxinxi.png' mode="widthFix"></image>
+      </view>
+      <navigator url="../accountList/accountList/accountList?type={{accountInfo.accountType}}" class="listitem-info">
+        <view>收款账户管理</view>
+        <image class='zhankai' src='{{imgUrl}}/common/icon/unfold.png'></image>
+      </navigator>
+    </view>
+    <view class='row-flex'>
+      <view class="icon-img">
+        <image src='{{imgUrl}}/page/account/zhangdan.png' mode="widthFix"></image>
+      </view>
+      <navigator url="../bill/bill/bill" class="listitem-info">
+        <view>账单</view>
+        <image class='zhankai' src='{{imgUrl}}/common/icon/unfold.png'></image>
+      </navigator>
+    </view>
+    <view class='row-flex'>
+      <view class="icon-img">
+        <image src='{{imgUrl}}/page/account/jiesuan.png' mode="widthFix"></image>
+      </view>
+      <navigator url="../settlement/settlement/settlement" class="listitem-info">
+        <view>票款结算汇总</view>
+        <image class='zhankai' src='{{imgUrl}}/common/icon/unfold.png'></image>
+      </navigator>
+    </view>
+    <view class='row-flex'>
+      <view class="icon-img">
+        <image src='{{imgUrl}}/page/account/help.png' mode="widthFix"></image>
+      </view>
+      <navigator url="/pages/common/problem/problem" class="listitem-info">
+        <view>常见问题</view>
+        <image class='zhankai' src='{{imgUrl}}/common/icon/unfold.png'></image>
+      </navigator>
+    </view> -->
+    <!-- <view class="text-center" style="padding-top:40rpx;">
+          <view class="com-problem green-color" bindtap='focus'>点击这里，获取实时账户信息</view>
+        </view> -->
+  </block>
+  <block wx:else>
+    <view class="gray-page border-top-10">
+      <view class="block-content-list">
+        <view class="text-center">
+          <image style="width:319rpx;height:280rpx;margin:60rpx 0 20rpx 0;" mode="widthFix" src="{{imgUrl}}/temp/noauth-img.png"></image>
+          <view class="lightgray-color">请先在电脑上开通存管账户</view>
+          <view class="lightgray-color">否则无法使用该功能</view>
+        </view>
+        <view class="text-center" style="margin:100rpx 0 20rpx 0;">
+          <navigator url="/pages/common/problem/problem" class="com-problem">常见问题</navigator>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

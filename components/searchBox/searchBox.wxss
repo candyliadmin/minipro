@@ -1,0 +1,174 @@
+.weui-search-bar {
+  position: relative;
+  padding: 8px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  box-sizing: border-box;
+  background-color: #f2f2f2;
+  -webkit-text-size-adjust: 100%;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.weui-search-bar__form {
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: auto;
+  flex: auto;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.weui-search-bar__box {
+  position: relative;
+  padding-left: 32px;
+  padding-right: 32px;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.weui-icon-search_in-box {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  margin-top: -7px;
+}
+
+.weui-search-bar__input {
+  height: 32px;
+  line-height: 32px;
+  font-size: 14px;
+  caret-color: #07c160;
+}
+
+.weui-search-bar__label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  border-radius: 4px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+  background: #fff;
+  line-height: 32px;
+}
+
+.weui-icon-search {
+  margin-right: 8px;
+  font-size: 14px;
+  vertical-align: top;
+  margin-top: 0.64em;
+  height: 1em;
+  line-height: 1em;
+}
+
+.weui-search-bar__text {
+  display: inline-block;
+  font-size: 14px;
+  vertical-align: top;
+}
+
+.weui-search-bar__cancel-btn {
+  margin-left: 8px;
+  line-height: 32px;
+  color: #576b95;
+  white-space: nowrap;
+}
+
+.weui-icon-clear {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 12px;
+  font-size: 0;
+}
+
+.weui-icon-clear:after {
+  content: "";
+  height: 100%;
+  vertical-align: middle;
+  display: inline-block;
+  width: 0;
+  overflow: hidden;
+}
+
+.tit_seabox {
+  width: calc(100% - 64rpx);
+  background: #fff;
+  height: 60rpx;
+  padding: 20rpx 32rpx;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.tit_seabox_bar {
+  width: calc(100% - 32rpx);
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  border-radius: 30rpx;
+  background: #f2f2f2;
+  padding-left: 32rpx;
+}
+
+/*有权限添加活动*/
+
+.tit_seabox_bar.tit_seabox_add {
+  width: calc(100% - 122rpx);
+}
+
+/*开始搜索时*/
+
+.tit_seabox_bar.tit_start_search {
+  width: calc(100% - 102rpx);
+}
+
+/*开始搜索且有权限添加*/
+
+.tit_seabox_bar.tit_start_search.tit_seabox_add {
+  width: calc(100% - 192rpx);
+}
+
+.tit_seabox_bar icon {
+  margin-right: 20rpx;
+}
+
+.tit_seabox input {
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 28rpx;
+  width: 100%;
+  margin-right: 32rpx;
+}
+
+.activity_add {
+  width: 100rpx;
+  text-align: right;
+  margin-left: 20rpx;
+}
+
+.activity_add image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.activity_seabtn {
+  font-size: 28rpx;
+  width: 70rpx;
+  text-align: right;
+}
+
+.search-btn {
+  background-color: #6fb600;
+  color: #fff;
+  text-align: center;
+  border-radius: 30rpx;
+  padding: 6rpx 0;
+}

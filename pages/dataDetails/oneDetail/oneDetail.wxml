@@ -1,0 +1,44 @@
+<!--pages/dataDetails/oneDetail/oneDetail.wxml-->
+<view class="block-content-list margin-t-10 fix-page">
+  <wxs module="m1">
+    var numberToFixed = function(n) {
+      n = n?n.toFixed(2):0.00;
+      return n;
+    }
+    module.exports.toFixed = numberToFixed;
+  </wxs>
+  <view class="text-center onedetail-top">
+    <view class="lightgray-color">{{detailInfo.licensePlate || '车牌号'}}</view>
+    <view class="lightorange-color onedetail-title">+{{m1.toFixed(detailInfo.grandTotal)}}</view>
+  </view>
+  <view class="padding-page">
+    <view class="weui-form-preview">
+      <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">线路</view>
+          <view class="weui-form-preview__value">{{detailInfo.routeName}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">车牌</view>
+          <view class="weui-form-preview__value">{{detailInfo.licensePlate || '车牌号'}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">终端编号</view>
+          <view class="weui-form-preview__value">{{detailInfo.terminalId}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">支付时间</view>
+          <view class="weui-form-preview__value">{{detailInfo.orderDate}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">订单号</view>
+          <view class="weui-form-preview__value">{{detailInfo.orderId}}</view>
+        </view>
+        <!-- <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">第三方交易流水号</view>
+          <view class="weui-form-preview__value">{{detailInfo.turnover}}</view>
+        </view> -->
+      </view>
+    </view>
+  </view>
+</view>

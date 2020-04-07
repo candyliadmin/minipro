@@ -1,0 +1,13 @@
+<!--pages/receipts/reportSuccess/reportSuccess.wxml-->
+<view class="page-result">
+  <view class="weui-msg">
+    <view class="weui-msg__icon-area">
+      <icon type="success" size="64"></icon>
+    </view>
+    <view class="weui-msg__text-area">
+      <view class="weui-msg__title">上报成功</view>
+      <view class="gray-color">{{time}}</view>
+      <view class="gray-color">现金上报金额共计<text class="orange-color money-span">{{total}}元</text></view>
+    </view>
+  </view>
+</view>

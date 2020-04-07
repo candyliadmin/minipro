@@ -1,0 +1,7 @@
+<!--pages/knowledge/knowledge.wxml-->
+<view class="block-content-list margin-t-10 text-center fix-page" >
+  <image style="width:50%;height:40rpx;padding:82rpx 0 102rpx 0;" mode="widthFix" src="{{imgUrl}}/temp/knowledge-text.png"></image>
+  <image class="empty-img" mode="widthFix" src="{{imgUrl}}/temp/knowledge-img.png"></image>
+  <view class="gray-color">功能即将上线</view>
+  <view class="gray-color">敬请期待！</view>
+</view>

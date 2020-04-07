@@ -1,0 +1,70 @@
+page{
+  background-color: #fff;
+}
+.header-bg{
+  background: url('https://static.badiyun.com/wxapp-agencies/image/page/account/piaokuan-bg.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  padding: 34rpx 0 100rpx 0;
+  color: #fff;
+  font-size: 32rpx;
+}
+.date-input{
+  padding: 10rpx 0;
+  justify-content: flex-start;
+  font-size: 34rpx;
+}
+.date-picker{
+  background-color: #F2F2F2;
+  border-radius: 8rpx;
+  text-align: center;
+  color: #666666;
+  width: calc(50% - 110rpx);
+  padding: 6rpx 0;
+  position: relative;
+  font-size: 28rpx;
+}
+.date-picker.start-date{
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.date-picker.end-date{
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding-right: 34rpx;
+}
+.date-picker image{
+  position: absolute;
+  right: 10rpx;
+  top:7rpx;
+  width: 34rpx;
+  height: 31rpx;
+}
+.reset-btn{
+  font-size: 28rpx;
+  padding: 6rpx 10rpx;
+}
+.date-item{
+  padding: 8rpx 24rpx;
+  font-size: 24rpx;
+  background-color: #F7F7FA;
+  border: 1px solid #979797;
+  display: inline-block;
+  border-radius: 32rpx;
+  margin: 14rpx 0;
+}
+.settlement-list .line-item{
+  padding: 0 0 0 47rpx;
+}
+.settlement-list .line-item .bdicon{
+  margin-left: -47rpx;
+  width: 32rpx;
+  height:32rpx;
+  margin-right: 5rpx;
+}
+.settlement-list .line-item .line-item-title{
+  font-size: 32rpx;
+}
+.settlement-list .line-item .btn-border{
+  background: none;
+}

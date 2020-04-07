@@ -1,0 +1,30 @@
+<view class="block-content-list">
+  <view class="product-table">
+    <view class="product-thead">
+      <view class="w-auto">功能</view>
+      <view class="w-144">免费版</view>
+      <view class="w-144">收费版</view>
+    </view>
+    <view class="product-body">
+      <view class="product-row" wx:for="{{listInfo}}" wx:key="index">
+        <view class="w-auto">{{item.content}}</view>
+        <view class="w-144">
+          <block wx:if="{{item.isFree}}">
+            <i class="iconfont icon-duigou text-blue"></i>
+          </block>
+          <block wx:else>
+            <i class="iconfont icon-cuo text-gray"></i>
+          </block>
+        </view>
+        <view class="w-144">
+          <block wx:if="{{item.isCharge}}">
+            <i class="iconfont icon-duigou text-blue"></i>
+          </block>
+          <block wx:else>
+            <i class="iconfont icon-cuo text-gray"></i>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

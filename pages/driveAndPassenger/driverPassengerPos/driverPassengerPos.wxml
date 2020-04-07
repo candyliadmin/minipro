@@ -1,0 +1,6 @@
+<!--pages/driveAndPassenger/driverPassengerPos/driverPassengerPos.wxml-->
+<view class="block-content-list margin-t-10 text-center fix-page" >
+  <image class="empty-img" style="padding-top:230rpx;" mode="widthFix" src="{{imgUrl}}/temp/monitor-img.png"></image>
+  <view class="gray-color">功能即将上线</view>
+  <view class="gray-color">敬请期待！</view>
+</view>

@@ -1,0 +1,12 @@
+<template name="tabBar">
+  <view class="tab-bar" style="color: {{tabBar.color}}; background: {{tarBar.backgroundColor}}; {{tabBar.position=='top'? 'top: 0' : 'bottom: 0'}}; {{tabBar.borderStyle? (tabBar.position=='top'? 'border-bottom: solid 1px '+tabBar.borderStyle + ';' : 'border-top: solid 1px '+tabBar.borderStyle + ';') : ''}}">
+    <block wx:for="{{tabBar.list}}" wx:key="pagePath" wx:if="{{item.show}}">
+      <view data-url="{{item.pagePath}}" bindtap="menuNav" class="{{item.clas}} {{item.active?'active':''}}" style="{{item.active? 'color: '+(item.selectedColor? item.selectedColor : tabBar.selectedColor) : ''}}" hover-class="menu-item-active" data-isdisabled="{{item.active}}">
+        <image src="{{item.selectedIconPath}}" class="img img1"></image>
+        <image src="{{item.iconPath}}"  class="img img2" ></image>
+        <text>{{item.text}}</text>
+      </view>
+    </block>
+    <view class="clear"></view>
+  </view>
+</template>

@@ -1,0 +1,72 @@
+<view class="gray-page border-top-10">
+  <view class="block-content-list">
+    <view class="border-bottom block">
+      <view class="flex_start">
+        <view class="lightgray-color">提交时间</view>
+        <view>{{data.createdTime}}</view>
+      </view>
+      <view class="flex_start">
+        <view class="lightgray-color">提交人</view>
+        <view>{{data.operateName}}</view>
+      </view>
+      <view class="flex_start">
+        <view class="lightgray-color">状态</view>
+        <view>{{statusObj[data.status] || '--'}}</view>
+      </view>
+      <view class="flex_start">
+        <view class="lightgray-color">账户类型</view>
+        <view>{{accountTypeObj[data.accountType] || '--'}}</view>
+      </view>
+      <view class="flex_start">
+        <view class="lightgray-color">备注</view>
+        <view>{{data.extra}}</view>
+      </view>
+    </view>
+    <view class="block">
+      <block wx:if="{{data.accountType === 'b2c'}}">
+        <view class="flex_start">
+          <view class="lightgray-color">开户人姓名</view>
+          <view>{{data.recipientName}}</view>
+        </view>
+      </block>
+      <block wx:if="{{data.accountType === 'b2b'}}">
+        <view class="flex_start">
+          <view class="lightgray-color">企业名称</view>
+          <view>{{data.name}}</view>
+        </view>
+        <view class="flex_start">
+          <view class="lightgray-color">营业执照编号</view>
+          <view>{{data.businessLicenseNo}}</view>
+        </view>
+        <view class="flex_start">
+          <view class="lightgray-color">法人姓名</view>
+          <view>{{data.contactName}}</view>
+        </view>
+        <view class="flex_start">
+          <view class="lightgray-color">法人手机号</view>
+          <view>{{data.contactPhone}}</view>
+        </view>
+        <view class="flex_start">
+          <view class="lightgray-color">法人身份证号码</view>
+          <view>{{data.contactCertNo}}</view>
+        </view>
+      </block>
+      <view class="flex_start">
+        <view class="lightgray-color">预留手机号</view>
+        <view>{{data.mobile}}</view>
+      </view>
+      <view class="flex_start">
+        <view class="lightgray-color">开户银行</view>
+        <view>{{data.openBank}}</view>
+      </view>
+      <view class="flex_start">
+        <view class="lightgray-color">银行卡类型</view>
+        <view>{{cardObj[data.cardType]}}</view>
+      </view>
+      <view class="flex_start">
+        <view class="lightgray-color">银行卡号</view>
+        <view>{{data.accountName}}</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,12 @@
+page{
+  background-color: #fff;
+}
+.block{
+  padding: 20rpx 0;
+}
+.block .lightgray-color{
+  width: 220rpx;
+}
+.block>view{
+  margin: 12rpx 0;
+}

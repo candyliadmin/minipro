@@ -1,0 +1,30 @@
+@import '../settlement/settlement';
+
+.title-bg{
+  width: 100%;
+  position: relative;
+  height: 200rpx;
+  background-color: #f2f2f2;
+}
+.title-bg image{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+.vehicle-income-title{
+  font-size: 46rpx;
+  font-weight: bold;
+}
+.title-content{
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 32rpx;
+  color: #fff;
+  height: 100%;
+}

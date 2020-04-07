@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "component_emptydata": "../../components/emptyData/emptyData"
+  },
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "订单明细"
+}

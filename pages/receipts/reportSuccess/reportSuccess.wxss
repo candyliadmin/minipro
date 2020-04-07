@@ -1,0 +1,13 @@
+/* pages/receipts/reportSuccess/reportSuccess.wxss */
+page{
+    background-color: #FFFFFF;
+}
+page,.page-result{height:100%;}
+.weui-msg__title{
+  font-weight: 400;
+  margin-bottom: 30rpx;
+}
+.weui-msg__icon-area{
+  margin-top: 60rpx;
+  margin-bottom: 30rpx;
+}

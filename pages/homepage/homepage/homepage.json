@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "巴滴云",
+  "navigationBarBackgroundColor": "#3E7EE2",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh":true,
+  "component": true
+}

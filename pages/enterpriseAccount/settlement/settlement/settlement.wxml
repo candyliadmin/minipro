@@ -1,0 +1,55 @@
+<view>
+  <wxs module="m1">
+    var format = function(d) {
+      var temp = d && d.indexOf('-')!=-1 ? d.split('-') : [];
+      var str = '';
+      str += temp[0]?temp[0]+'年':'';
+      str += temp[1]?temp[1]+'月':'';
+      str += temp[2]?temp[2]+'日':'';
+      return str?str:d;
+    }
+    module.exports.formatDate = format;
+  </wxs>
+  <view class="header-bg text-center">
+    <image src="{{imgUrl}}/page/account/piaokuan-icon.png" style="width:63rpx;height:71rpx;" mode="widthFix"></image>
+    <view>￥
+      <text class="money-span">{{total}}</text>
+    </view>
+    <view>统计金额</view>
+  </view>
+  <view class="block-content-list">
+    <view class="date-input flex__space-between">
+      <view>日期：</view>
+      <picker class="date-picker start-date" data-type="start" mode="date" value="{{startday}}" start="" end="{{endday}}" bindchange="bindPickChange">
+        <view class="weui-input">{{startday || '开始日期'}}</view>
+      </picker>
+      <picker class="date-picker end-date" data-type="end" mode="date" value="{{endday}}" start="{{startday}}" end="{{today}}" bindchange="bindPickChange">
+        <view class="weui-input">{{endday || '结束日期'}}</view>
+        <image src="{{imgUrl}}/common/icon/date.png" style="width:34rpx;" mode="widthFix"></image>
+      </picker>
+      <!-- <view class="reset-btn" wx:if="{{startday || endday}}" bindtap="clearDay">重置</view> -->
+    </view>
+    <view class="spantext red-color">* 账单查询以实际出账日期为准（默认4-5个工作日出账）</view>
+    <scroll-view scroll-y bindscrolltolower="getMOreList" style="height:calc(100% - 120rpx);">
+      <view class="settlement-list" wx:if="{{billList.length>0}}">
+        <view wx:for="{{billList}}" class="line-item operation-line" wx:key="index">
+          <navigator url="../byRoute/byRoute?date={{item.dateRoyalty}}" class="border-bottom" style="padding:24rpx 0;">
+            <view class="line-item-wrap">
+              <view class="line-item-title">
+                <image class="bdicon" mode="widthFix" src="{{imgUrl}}/page/account/date-icon.png"></image>
+                {{m1.formatDate(item.dateRoyalty)}}
+                <view class="btn-border fr">
+                  <text class="orange-color">￥{{item.royaltyAmountSum}}</text>
+                  <i class="iconfont icon-right lightgray-color spantext"></i>
+                </view>
+              </view>
+            </view>
+          </navigator>
+        </view>
+      </view>
+      <view wx:if="{{billList.length==0}}">
+        <component_emptydata bordered="{{false}}" small="{{true}}" />
+      </view>
+    </scroll-view>
+  </view>
+</view>

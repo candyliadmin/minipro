@@ -1,0 +1,8 @@
+<!--pages/vehiclePosition/vehiclePosition.wxml-->
+<!-- bindmarkertap="markertap" -->
+<map id="map" scale="{{scale}}" markers="{{markers}}" latitude="{{latitude}}" longitude="{{longitude}}" show-location bindregionchange="regionchange" style="width: 100%; height: {{view.Height}}px;" subkey="EF6BZ-ZLUKW-XUQRR-OVCBY-42G6Z-6AFWR">
+  <cover-view class="controls">
+    <cover-image class="controls-img" src="{{imgUrl}}/common/icon/zoom-in.png" bindtap="controltap" data-controlId="{{1}}"></cover-image>
+    <cover-image class="controls-img" src="{{imgUrl}}/common/icon/zoom-out.png" bindtap="controltap"></cover-image>
+  </cover-view>
+</map>

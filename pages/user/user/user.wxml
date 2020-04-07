@@ -1,0 +1,50 @@
+<!--pages/user/user.wxml-->
+<view class='user-page'>
+  <view class="weui-panel weui-panel_access">
+    <view class="weui-panel__bd">
+      <navigator url="/pages/user/userInfo/userInfo" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+          <view class="weui-media-box__thumb">
+            <open-data type="userAvatarUrl"></open-data>
+          </view>
+        </view>
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">
+            <view wx:if="{{hasUserInfo}}">{{accountInfo.name}}</view>
+            <block wx:else>
+              <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" size="mini"> 获取头像昵称 </button>
+            </block>
+            <block wx:if="{{userPhone}}" wx:for="{{roleName}}" wx:key="index">
+              <view class="tag tag-small line tag-green" wx:if="{{item == 'MANAGER'}}">车队长</view>
+              <view class="tag tag-small line tag-blue" wx:if="{{item == 'DRIVER'}}">司机</view>
+              <view class="tag tag-small line" wx:if="{{item == 'ATTENDANT'}}">乘务员</view>
+            </block>
+          </view>
+          <view wx:if="{{userPhone}}" class="weui-media-box__desc">
+            <view style="font-size:24rpx;">手机号：{{userPhone}}</view>
+          </view>
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+    </view>
+  </view>
+  <view class="weui-cells weui-cells_after-title">
+    <navigator url="/pages/user/feedback/feedback" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">意见反馈</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <navigator url="/pages/user/about/about" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">关于巴滴</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <navigator url="/pages/user/product/product" class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:if="{{isManage}}">
+      <view class="weui-cell__bd">已是专业版</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+  </view>
+  <button bindtap='logout' type='default' style="margin:60rpx 40rpx;color:#E64340">退出登录</button>
+  <view class="weui-footer" style="position:fixed;bottom:28rpx;width:100%;text-algin:center;">
+    <view class="weui-footer__text">版本号：{{version}}</view>
+    <view class="weui-footer__text">Copyright © 2018-2019 badiyun.com</view>
+  </view>
+</view>

@@ -1,0 +1,67 @@
+<!--pages/operationManage/workEfforts/workEfforts.wxml-->
+<view>
+  <view class="opration-top flex__space-between">
+    <view style="width:330rpx;">
+      <view class="select-wrap">
+        <view class="select-box select-no-border">
+          <picker bindchange="bindPickerTimeChange" mode="date" value="{{date}}">
+            <view class="picker select-picker">{{dateArr[0]}}年{{dateArr[1]}}月{{dateArr[2]}}日</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <view style="width:230rpx;">
+      <view class="select-wrap">
+        <view class="select-box select-no-border">
+          <picker range-key="{{'name'}}" bindchange="bindPickerChange" value="{{directionIndex}}" range="{{directionSelect}}">
+            <view class="picker select-picker">
+              {{directionSelect[directionIndex]['name'] || "选择方向"}}
+            </view>
+          </picker>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="gray-page margin-t-10">
+    <view class="block-content-list" style="padding-top:10rpx;">
+      <scroll-view scroll-y style="height:calc(100vh - 270rpx);" bindscrolltolower="getMoreList">
+        <view data-id="{{item.id}}" data-status="{{item.receiptStatus}}" bindtap="addReceipt" wx:for="{{operationList}}" wx:key="id" class="operation-item border-bottom">
+          <view class="line-item-wrap flex__space-between" style="align-items:stretch">
+            <view>
+              <view class="line-item-title flex_start">
+                <view class="bold vehicle-time">发车 {{item.departureTime}}</view>
+                <view class="bold vehicle-time">到达 {{item.arrivalTime || '--'}}</view>
+              </view>
+              <view class="line-row spantext lightgray-color">{{item.routeName || ''}} {{directionType[item.routeDirectionId]}}</view>
+              <view class="line-row spantext lightgray-color">司乘信息：{{item.driverName || '--'}} {{item.attendantName || '--'}}</view>
+            </view>
+            <view class="flex__center-center" style="align-items:flex-end">
+              <view class="line-row spantext lightgray-color">班次：{{item.trip || '--'}}</view>
+              <view class="line-row spantext lightgray-color">{{item.licensePlate || '--'}}</view>
+              <view class="btn-border">
+                <i class="iconfont icon-right"></i>
+              </view>
+              <!-- <view data-id="{{item.id}}" data-status="{{item.receiptStatus}}" class="state-btn state-blue-btn bordered" bindtap="addReceipt">修改</view>
+              <view class="state-btn state-red-btn bordered" bindtap="delReceipt" data-id="{{item.id}}" data-index="{{index}}">删除</view> -->
+            </view>
+          </view>
+        </view>
+        <view>
+          <view class="weui-loadmore" wx:if="{{loading}}">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">正在加载</view>
+          </view>
+          <view class="weui-loadmore" wx:if="{{!loading && pageNo>=totalPage && operationList.length>0}}">
+            <view class="weui-loadmore__tips">没有更多了</view>
+          </view>
+        </view>
+        <view wx:if="{{operationList.length==0}}">
+          <component_emptydata bordered="{{false}}" small="{{true}}" />
+        </view>
+      </scroll-view>
+      <view class="receipts-bottom">
+        <button class="white-btn" style="color:#3B78D6;" bindtap="addReceipt">新增发车记录</button>
+      </view>
+    </view>
+  </view>
+</view>

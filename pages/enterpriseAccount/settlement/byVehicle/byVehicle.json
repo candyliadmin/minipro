@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "票款结算汇总",
+  "usingComponents": {
+    "component_emptydata": "../../../../components/emptyData/emptyData"
+  }
+}

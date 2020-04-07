@@ -1,0 +1,11 @@
+/* pages/line/line.wxss */
+.line-item-title{
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.line-item-wrap view{
+  margin-bottom: 8rpx;
+}
+.line-item-wrap .line-row{
+  padding-left: 44rpx;
+}

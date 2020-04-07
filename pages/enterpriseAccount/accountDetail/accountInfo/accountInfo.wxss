@@ -1,0 +1,10 @@
+page{
+  background-color: #fff;
+}
+.info-body{
+  padding-left:80rpx;
+  padding-top:36rpx;
+}
+.info-body .flex__space-between{
+  margin-bottom: 14rpx;
+}

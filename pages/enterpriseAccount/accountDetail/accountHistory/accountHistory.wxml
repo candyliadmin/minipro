@@ -1,0 +1,21 @@
+<view class="gray-page border-top-10">
+  <view class="block-content-list">
+    <view class="line-item border-bottom flex__space-between" wx-if="{{dataList.length>0}}" wx:for="{{dataList}}" wx:key="index">
+      <view>
+        <view>{{item.createdTime}}</view>
+        <view class="line-row spantext lightgray-color">{{item.operateName || '-'}} {{item.operatePhone || '-'}}</view>
+      </view>
+      <view class="flex__center-right">
+        <image wx:if="{{statusObj[item.status] && statusObj[item.status].image}}" src="{{imgUrl}}/{{statusObj[item.status].image}}" mode="widthFix" class="margin-b-10" style="width:72rpx;height:68rpx;"></image>
+        <view wx:else class="bold" style="color:#F56C6C;">
+          <icon type="warn" size="25" color="#F56C6C"></icon> 超时未审批
+        </view>
+        <navigator url="../historyDetail/historyDetail?id={{item.id}}" class="line-row spantext">详情
+          <i class="iconfont icon-right spantext"></i>
+        </navigator>
+      </view>
+    </view>
+    <component_emptydata wx-if="{{dataList.length==0}}" small="{{true}}" bordered="{{false}}" />
+    <view class="gray-color text-center" style="margin-top:100rpx;">仅展示近五条记录</view>
+  </view>
+</view>

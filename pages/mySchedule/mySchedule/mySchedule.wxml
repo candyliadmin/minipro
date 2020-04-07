@@ -1,0 +1,60 @@
+<view>
+  <view class="block-title schedule-title flex__space-between">
+    <view class="date-opt-btn" bindtap="setDate" data-day="-1">前一天</view>
+    <view class="select-wrap">
+      <view class="select-box select-no-border">
+        <picker bindchange="bindPickerChange" mode="date" value="{{date}}">
+          <view class="picker select-picker">{{dateArr[0]}}年{{dateArr[1]}}月{{dateArr[2]}}日</view>
+        </picker>
+      </view>
+    </view>
+    <view class="date-opt-btn" bindtap="setDate" data-day="1">后一天</view>
+  </view>
+  <view class="gray-page border-top-10">
+    <scroll-view scroll-y bindscrolltolower="getMoreList" style="height:calc(100vh - 180rpx);background-color:#fff;" wx-if="{{scheduleList.length > 0}}">
+      <view style="padding:26rpx;">
+        <view wx:for="{{scheduleList}}" wx:key="index" class="line-item border-bottom">
+          <view class="line-item-wrap">
+            <view class="line-item-title flex__space-between">
+              <text class="bold">班次 {{item.departureTime}}</text>
+              <text class="spantext">{{item.licensePlate || '车牌号'}}</text>
+            </view>
+            <view class="flex__space-between" style="align-items:flex-end">
+              <view>
+                <view class="line-row spantext lightgray-color">线路：{{item.routeName || ''}}
+                  <text class="padding-l-10">{{directionType[item.directionId]}}</text>
+                </view>
+                <view class="line-row spantext lightgray-color">{{item.roleType == 0?'乘务员：':'驾驶员：'}}
+                  <text style="padding-right: 20rpx;" wx:for="{{item.partner}}" wx:key="index" wx:for-item="partner">{{partner.name || '-'}}</text>
+                  <text wx:if="{{item.partner.length==0}}">-</text>
+                </view>
+              </view>
+              <view class="flex__center-right" wx:if="{{item.roleType == 0 && today == date}}">
+                <view bindtap="showClockIn" class="btn line {{clockInState[item.clockValue].btnType}} {{item.clockStatus==='ABNORMAL_DEPARTURE'?'wranning':''}} btn-w120 border-radius" wx:if="{{clockInState[item.clockValue]}}" data-id="{{item.id}}" data-vid="{{item.vehicleId}}" data-index="{{index}}">{{clockInState[item.clockValue].text}}</view>
+              </view>
+              <view class="flex__center-right" wx:elif="{{item.roleType == 0 && today > date}}">
+                <view bindtap="showClockIn" class="btn line {{item.clockStatus==='ABNORMAL_DEPARTURE'?'wranning':''}} btn-w120 border-radius" wx:if="{{item.clockValue>=2}}" data-id="{{item.id}}" data-vid="{{item.vehicleId}}">{{clockInState[item.clockValue].text}}</view>
+                <view wx:if="{{item.clockValue<1}}" class="lightgray-color margin-b-10">未打卡</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <component_loadmore loading="{{loading}}" hasmore="{{pageNo<=totalPages && scheduleList.length>0}}" wx:if="{{totalPages>1}}" />
+      </view>
+    </scroll-view>
+  </view>
+  <view class="weui-msg" wx-if="{{scheduleList.length == 0}}">
+    <view class="weui-msg__icon-area">
+      <image class="empty-img" style="padding-top:220rpx;width:294rpx;height:115rpx;" mode="widthFix" src="{{imgUrl}}/common/small-empty-data.png"></image>
+    </view>
+    <view class="weui-msg__text-area gray-color">
+      <view>未获取到您的排班信息</view>
+      <view>请联系调度人员</view>
+    </view>
+  </view>
+</view>
+<navigator url="/pages/codeDeparture/codeDeparture/codeDeparture" class="fix-code" hover-class="fix-code-active">
+  <image src="/image/common/fix-code.png" mode="widthFix"></image>
+</navigator>
+<import src="../bar.wxml" />
+<template is="sheduleBar" data="{{tabBar}}" />

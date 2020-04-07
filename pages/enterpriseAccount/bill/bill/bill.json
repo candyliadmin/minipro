@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "账单",
+  "usingComponents": {
+    "component_emptydata": "../../../../components/emptyData/emptyData",
+    "component_loadmore": "../../../components/loadMore/loadMore"
+  }
+}

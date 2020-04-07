@@ -1,0 +1,212 @@
+/* pages/receipts/receipts.wxss */
+page{
+  background-color: #F2F2F2;
+}
+.line-item-title{
+  font-weight: bold;
+}
+.receipts-tab{
+  background-color: #fff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  justify-items: center;
+  font-size: 36rpx;
+  line-height: 2;
+  border-bottom: 10rpx solid #F2F2F2;
+  padding-bottom: 22rpx;
+  padding-top: 27rpx;
+}
+.receipts-tab-item{
+  padding: 0 34rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  padding-bottom: 8rpx;
+  border-bottom: 4rpx solid #fff;
+  border-bottom-left-radius: 4rpx;
+  border-bottom-right-radius: 4rpx;
+  position: relative;
+}
+.weui-badge {
+  background-color: #D81E06;
+}
+.receipts-tab-item.active{
+  border-color: #51B900;
+}
+.passenger-con{
+  padding: 19rpx;
+  background-color: #fff;
+  box-sizing: border-box;
+  position: relative;
+  height: calc(100vh - 110rpx);
+}
+.money-text{
+  color: #FBA03B;
+}
+.money-text text{
+  font-weight: bold;
+  font-size: 48rpx;
+}
+.panel-shadow{
+  box-shadow: 0 2rpx 10rpx 0 rgba(0, 0, 0, 0.1);
+  margin-bottom: 10rpx;
+  border-bottom: none;
+}
+.date-item{
+  padding: 16rpx 24rpx;
+  font-size: 24rpx;
+  background-color: #F7F7FA;
+  border: 1px solid #979797;
+  display: inline-block;
+  border-radius: 32rpx;
+  margin: 14rpx 0 10rpx 0;
+}
+.receipts-wrap{
+  padding: 5rpx 26rpx;
+}
+.receipts-con .panel-items{
+  background-color: #fff;
+  padding: 13rpx 21rpx;
+  box-shadow:0px 2px 8px 0px rgba(153,153,153,0.2);
+}
+.receipts-con .title-type{
+  color: #74B60D;
+  padding: 10rpx 0;
+  position: relative;
+  margin: 10rpx 0;
+}
+.title-type image{
+  width: 34rpx;
+  top: 5rpx;
+  padding: 0 16rpx 0 30rpx;
+  position: relative;
+}
+.title-type::before{
+  content: '';
+  display: inline-block;
+  width: 8rpx;
+  height: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+  background-color: #74B60D;
+  box-shadow:0px 2px 4px 0px rgba(221,221,221,0.65);
+}
+.receipts-con .panel-item-title,.receipts-con .panel-item-info{
+  padding-left: 25rpx;
+}
+.receipts-bottom{
+    position: absolute;
+    bottom:0;
+    left:0;
+    padding: 10rpx 40rpx 30rpx 40rpx;
+    width: 100%;
+    box-sizing: border-box;
+    background: #fff;
+    display: flex;
+    z-index: 10;
+}
+.receipts-bottom button{
+  width: 100%;
+  font-size: 36rpx;
+}
+button.white-btn{
+  background-color: #fff;
+  color: #666666;
+}
+button.white-btn::after{
+  border-color: #666666;
+}
+button.gray-btn{
+  background-color: #ddd;
+  color: #fff;
+}
+button.gray-btn::after{
+  border-color: transparent;
+}
+button.gray-btn{
+  background-color: #ddd;
+  color: #fff;
+}
+button.gray-btn.active{
+  background-color: #51B900;
+}
+.receipts-item{
+  display: flex;
+  width: 100%;
+}
+.checkbox_item{
+  width: 25px;
+}
+.receipts-con{
+  width: 100%;
+}
+.line-item{
+  padding-top: 0;
+}
+.line-item .weui-slideview{
+  padding: 28rpx 0;
+  border-bottom: 1rpx solid rgba(0,0,0,.1);
+}
+.line-item .weui-slideview:last-of-type{
+  border-bottom: none;
+}
+.receipt-img{
+  width: 28rpx;
+  height: 30rpx;
+  margin-left: 18rpx;
+}
+.weui-slideview__btn{
+  width: 100%;
+  padding: 0 17rpx;
+  height: calc(100% - 56rpx);
+  margin-top: 28rpx;
+  text-align: center;
+  margin-left: 28rpx;
+  line-height: 150rpx;
+}
+.weui-slideview__btn-group_warn .weui-slideview__btn{
+  background: #D81E06;
+}
+.weui-demo-dialog{
+  visibility:hidden;
+  opacity:0;
+  /* transition:opacity .3s; */
+}
+.weui-demo-dialog_show{
+  visibility:visible;
+  opacity:1;
+}
+.date-input{
+  padding: 0 24rpx 10rpx 24rpx;
+  justify-content: flex-start;
+  font-size: 34rpx;
+}
+.date-picker{
+  background-color: #F2F2F2;
+  border-radius: 8rpx;
+  text-align: center;
+  color: #666666;
+  width: calc(100% - 80rpx);
+  padding: 6rpx 0;
+  position: relative;
+  font-size: 28rpx;
+}
+.date-picker image{
+  position: absolute;
+  right: 10rpx;
+  top:7rpx;
+}
+.reset-btn{
+  font-size: 28rpx;
+  padding: 6rpx 10rpx;
+}
+.state-btn{
+  border-radius: 6rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.line-item-wrap .line-row{
+  margin-top: 4rpx;
+}

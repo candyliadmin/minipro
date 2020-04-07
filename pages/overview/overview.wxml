@@ -1,0 +1,69 @@
+<!--pages/overview.wxml-->
+<view class="">
+  <view class="weui-cells weui-cells_after-title margin-t-10">
+    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="overview-item">
+        <view class="flex__space-between">
+          <view class="money-span orange-color">{{todayRevenue.total}}</view>
+          <view>今日营收</view>
+        </view>
+        <view class="spantext">注：含
+          <text class="orange-color">￥{{todayRevenue.todayOffline}}</text>现金</view>
+        <view class="spantext">
+          <text class="gray-color">截至当日</text>
+          <text class="red-color">{{endTime}}</text>
+        </view>
+        <view class="flex__space-between">
+          <view>{{today}}</view>
+          <navigator url="incomeList/incomeList?type=0&&agencyId={{todayRevenue.agencyId}}" class="btn-border" wx:if="{{todayRevenue.agencyId}}">详情
+            <i class="iconfont icon-right"></i>
+          </navigator>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="overview-item">
+        <view class="flex__space-between">
+          <view class="money-span orange-color">{{yesterdayRevenue.total}}</view>
+          <view>昨日营收</view>
+        </view>
+        <view class="spantext">注：含
+          <text class="orange-color">￥{{yesterdayRevenue.yesterdayOffline}}</text>现金</view>
+        <view class="flex__space-between">
+          <view>{{yesterday}}</view>
+          <navigator url="incomeList/incomeList?type=1&&agencyId={{yesterdayRevenue.agencyId}}" class="btn-border" wx:if="{{yesterdayRevenue.agencyId}}">详情
+            <i class="iconfont icon-right"></i>
+          </navigator>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="overview-item">
+        <view class="flex__space-between">
+          <view class="money-span orange-color">{{monthRevenue.total}}</view>
+          <view>本月营收</view>
+        </view>
+        <view class="spantext">注：含
+          <text class="orange-color">￥{{monthRevenue.monthOffline}}</text>现金</view>
+        <view class="flex__space-between">
+          <view class="lightgray-color">截止{{isFirstDay?'今日是本月第一天':yesterday}}</view>
+          <navigator url="incomeList/incomeList?type=2&&agencyId={{monthRevenue.agencyId}}" class="btn-border" wx:if="{{monthRevenue.agencyId}}">详情
+            <i class="iconfont icon-right"></i>
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="chart-item margin-t-10">
+    <view class="flex__space-between" style="padding:15rpx;">
+      <view class="">本月营收趋势图</view>
+      <view class="spantext gray-color">金额（元）</view>
+    </view>
+    <view style="padding-right:20rpx;">
+      <view wx:if="{{isFirstDay}}" class="text-center" style="font-size:24rpx;">本月暂无数据</view>
+      <view class='chart-body' wx:if="{{!isFirstDay}}">
+        <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
+      </view>
+    </view>
+  </view>
+</view>

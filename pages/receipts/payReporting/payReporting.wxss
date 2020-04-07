@@ -1,0 +1,105 @@
+ /* pages/mySchedule/payReporting/payReporting.wxss */
+.payreport-title{
+  padding: 24rpx 24rpx 0 24rpx;
+  background-color: #fff;
+}
+.payreport-title view{
+  padding-bottom: 24rpx;
+}
+.line-item{
+  padding: 20rpx 30rpx;
+}
+.line-item-title{
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.vehicle-num{
+  padding-left: 24rpx;
+  margin-left: 24rpx;
+  border-left: 1px solid #ddd;
+}
+.ticket-price-list{
+  padding-bottom: 100rpx;
+}
+.ticket-price-item{
+  padding: 20rpx 32rpx 0 32rpx;
+  background-color: #fff;
+}
+.ticket-price-top{
+  border-bottom: 1px dashed #ddd;
+}
+.ticket-price-content{
+  padding: 20rpx 0;
+}
+.big-text{
+  font-size: 70rpx;
+}
+.font-18{
+  font-size: 36rpx;
+}
+.add-reduce-item{
+  display: flex;
+  justify-content: space-around;
+}
+.add-reduce-item .option-btn{
+  border: 1px solid #999;
+  padding: 0 12rpx;
+  height: 50rpx;
+  text-align: center;
+  color: #999;
+}
+.option-btn i{
+  font-size: 26rpx;
+  vertical-align: middle;
+}
+.add-reduce-item .weui-input{
+  background-color: #fff;
+  border: 1px solid #999;
+  font-size: 24rpx;
+  text-align: center;
+  font-weight: 400;
+  color: #333;
+  padding: 0;
+  margin: 0;
+  height: 50rpx;
+  border-left: none;
+  border-right: none;
+}
+.price-input-item{
+  position: relative;
+  padding-left: 60rpx;
+  width: 39%;
+}
+.price-input-item .label{
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.dashed-line{
+  margin: 0 15rpx;
+  height: 50rpx;
+  border-left: 1px dashed #ddd;
+}
+.submit-bottom{
+  background-color: #fff;
+  position:fixed;
+  bottom:0;
+  width:100%;
+  left:0;
+  z-index:1;
+  padding: 14rpx 0;
+}
+.buttom-title{
+  font-size: 36rpx;
+  padding: 0 26rpx;
+}
+.submit-btn{
+  background-color:#3B78D6;
+  border-radius: 46rpx;
+  width: 40%;
+  margin-right: 26rpx;
+  padding: 18rpx 0;
+  text-align: center;
+  color: #fff;
+  font-size: 36rpx;
+}

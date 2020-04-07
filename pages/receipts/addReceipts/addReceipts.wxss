@@ -1,0 +1,44 @@
+
+.weui-cell_select{
+  overflow: hidden;
+}
+.weui-select{
+  border-right: none;
+  white-space: nowrap;
+}
+.add-title{
+  padding: 30rpx 0 26rpx 0;
+  font-size: 34rpx;
+  margin: 0 32rpx;
+}
+
+button.white-btn{
+  background-color: #fff;
+  color: #666666;
+}
+button.gray-btn{
+  background-color: #ddd;
+  color: #fff;
+}
+button.gray-btn::after{
+  border-color: transparent;
+}
+button.gray-btn{
+  background-color: #ddd;
+  color: #fff;
+}
+button.gray-btn.active{
+  background-color: #3B78D6;
+}
+button.gray-btn.disabled{
+  background-color:rgba(59, 120, 214, 0.42);
+}
+.weui-demo-dialog{
+  visibility:hidden;
+  opacity:0;
+  transition:opacity .3s;
+}
+.weui-demo-dialog_show{
+  visibility:visible;
+  opacity:1;
+}

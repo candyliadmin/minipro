@@ -1,0 +1,7 @@
+<!--components/collectGuide/emptyData.wxml-->
+<view class="block-content-list {{bordered?'border-gray-top':''}}">
+  <image class="empty-img" wx:if="{{small}}" style="padding-top:230rpx;" mode="widthFix" src="{{imgUrl}}/common/small-empty-data.png"></image>
+  <image class="empty-img" wx:else style="padding-top:230rpx;" mode="widthFix" src="{{imgUrl}}/common/empty-data.png"></image>
+  <view class="gray-color" style="font-size:28rpx;">暂时没有数据...</view>
+</view>
+

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "SearchBar": "/components/searchBox/searchBox",
+    "component_emptydata": "/components/emptyData/emptyData"
+  },
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "营运管理"
+}

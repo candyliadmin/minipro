@@ -1,0 +1,27 @@
+<view class='main'>
+  <view class="grids-wrap">
+    <block wx:for="{{grids}}" wx:key="index">
+      <view class="indexcard" wx:if="{{item.list.length>0}}">
+        <view class="card-title">{{item.name}}</view>
+        <view class="card-content">
+          <view class="weui-grids">
+            <block wx:for="{{item.list}}" wx:key="index">
+              <navigator url="{{item.navUrl}}" class="weui-grid" hover-class="weui-grid_active">
+                <image class="weui-grid__icon" src="{{item.imgUrl}}" />
+                <view class="weui-grid__label">{{item.text}}</view>
+              </navigator>
+            </block>
+            <view wx:if="{{item.list.length%3>0 && item.list.length%3<=2}}" class="weui-grid">
+              <image class="weui-grid__icon" src="{{item.imgUrl}}" />
+              <view class="weui-grid__label">{{item.text}}</view>
+            </view>
+            <view wx:if="{{item.list.length%3>0 && item.list.length%3<=1}}" class="weui-grid">
+              <image class="weui-grid__icon" src="{{item.imgUrl}}" />
+              <view class="weui-grid__label">{{item.text}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

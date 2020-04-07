@@ -1,0 +1,56 @@
+<view class="canvas-box">
+  <canvas canvas-id="canvas" hidden="{{canvasHidden}}" style="width:750px;height:1018px;" />
+</view>
+<!-- <view class="print-code">
+  <view class="print-head">
+    <view class="flex__space-between">
+      <view class="print-username bold">陈一忠</view>
+      <view class="print-role">司机码</view>
+    </view>
+    <view>手机号：<text class="bold">13678259823</text></view>
+  </view>
+  <view class="print-body">
+    <image mode="widthFix" src="{{imagePath}}"></image>
+    <view class="print-desc">用扫码机扫一扫，成功发车</view>
+  </view>
+  <view class="print-footer text-center">
+    <image src="../../../image/page/codeshedule/badiyun_logo.png"></image>
+  </view>
+</view> -->
+<view class="row-flex-page">
+    <view class="border-radius code-block text-center" wx:if="{{codeList.length<=1}}">
+      <view wx:for="{{codeList}}" wx:key="index">
+        <view class="code-username bold margin-b-10">{{name}}</view>
+        <view>手机号：{{phone}}</view>
+        <view class="img-box">
+          <image mode="widthFix" src="{{imagePath}}"></image>
+        </view>
+        <view class="gray-color margin-b-10">{{item.type}}</view>
+        <view class="lightgray-color code-username">{{item.desc}}</view>
+        <view class="btn btn-blue" bindtap="downCode">保存</view>
+      </view>
+    </view>
+    <block wx:else>
+      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" indicator-color="rgba(221, 221, 221, 1)" indicator-active-color="rgba(255, 255, 255, 1)" interval="{{interval}}" duration="{{duration}}" bindchange='onSlideChangeEnd' circular="{{true}}" easing-function="easeInCubic">
+        <block wx:for="{{codeList}}" wx:key="index">
+          <swiper-item class="text-center">
+            <view class="border-radius code-block">
+              <view class="code-username bold margin-b-10">{{name}}</view>
+              <view>手机号：{{phone}}</view>
+              <view class="img-box">
+                <image mode="widthFix" src="{{imagePath}}"></image>
+              </view>
+              <view class="gray-color margin-b-10">{{item.type}}</view>
+              <view class="lightgray-color code-username">{{item.desc}}</view>
+              <view class="btn btn-blue" bindtap="downCode">保存</view>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </block>
+
+  <image src="{{imgUrl}}/page/codeshedule/bg.png?iii" mode="widthFix" class="fixbg"></image>
+  <view class="canvas-box">
+    <canvas hidden="{{canvasHidden}}" style="width: 686rpx;height: 686rpx;background:#f1f1f1;" canvas-id="mycanvas" />
+  </view>
+</view>

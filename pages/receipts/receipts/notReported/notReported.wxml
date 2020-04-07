@@ -1,0 +1,67 @@
+<!--pages/receipts/receipts.wxml-->
+<component_bar id="bar" />
+<wxs module="m1">
+  var numberToFixed = function(n) {
+    n = n ? n.toFixed(2) : 0.00;
+    return n;
+  }
+  module.exports.toFixed = numberToFixed;
+</wxs>
+
+<view class="passenger-con">
+  <scroll-view scroll-y bindscrolltolower="getMOreList" style="height:calc(100% - 100rpx);" wx:if="{{dataList.length>0}}">
+    <view class="line-item">
+      <view class="weui-slideview" wx:for="{{dataList}}" wx:key="value" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchend='touchend'>
+        <view class="weui-slideview__left" style="transform:translateX({{item.x/2}}px);">
+          <view class="line-item-wrap">
+            <view class="receipts-item">
+              <view class="receipts-con flex__center-top">
+                <view>
+                  <view class="flex_start">
+                    <view class="line-item-title ">发车时间 {{item.departureTime}}</view>
+                    <view class="gray-color spantext padding-l-10">| {{item.licensePlate || ''}}</view>
+                    <image src="{{imgUrl}}/common/icon/attendant.png" style="width:28rpx;" mode="widthFix" class="receipt-img" wx:if="{{item.receiptType == 'CUSTOM'}}"></image>
+                    <image src="{{imgUrl}}/common/icon/driver.png" style="width:28rpx;" mode="widthFix" class="receipt-img" wx:if="{{item.receiptType == 'WORKEFFORT'}}"></image>
+                    <i class="iconfont icon-tixing red-color margin-l-10" wx:if="{{item.departureStatus==='ABNORMAL_DEPARTURE'}}"></i>
+                  </view>
+                  <view class="line-row spantext gray-color">{{item.routeName || ''}} {{directionType[item.routeDirectionId]}}</view>
+                  <view class="line-row spantext gray-color">司乘：{{item.driverName || '-'}}</view>
+                  <view class="line-row spantext red-color" wx:if="{{item.day<minday}}">已超时，无法上报</view>
+                </view>
+                <view class="flex__center-right" style="justify-content:space-between">
+                  <block wx:if="{{item.day>=minday}}">
+                    <view wx:if="{{item.receiptItems.length==0}}" class="state-btn bordered state-gray-btn" bindtap="unReceipt">上报</view>
+                    <view wx:else class="state-btn bordered {{item.totalFares>0?'state-blue-btn':'state-red-btn'}}" bindtap="editReceipt" data-type="{{item.receiptType}}" data-id="{{item.id}}" data-index="{{index}}">
+                      上报
+                    </view>
+                  </block>
+                  <block wx:else>
+                    <view class="state-btn bordered state-red-btn" bindtap="delReceipt" data-id="{{item.id}}" data-index="{{index}}">删除</view>
+                  </block>
+                  <view class="text-right">
+                    <view class="spantext line-row">合计：¥{{m1.toFixed(item.totalFares || 0)}}</view>
+                    <view class="spantext line-row lightgray-color">{{item.day}}</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="weui-slideview__right">
+          <view class="weui-slideview__buttons">
+            <view class="weui-slideview__btn__wrp weui-slideview__btn-group_warn" style="transform:translateX({{item.x/2}}px);">
+              <view class="weui-slideview__btn" bindtap="delReceipt" data-id="{{item.id}}" data-index="{{index}}">删除</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <component_loadmore loading="{{loading}}" hasmore="{{pageNo<=totalPages && dataList.length>0}}" />
+  </scroll-view>
+  <view wx:if="{{dataList.length==0}}">
+    <component_emptydata bordered="{{false}}" small="{{true}}" />
+  </view>
+  <view class="receipts-bottom">
+    <button class="white-btn" bindtap="editReceipt" style="color:#3B78D6">录入发车记录</button>
+  </view>
+</view>

@@ -1,0 +1,4 @@
+@import "../notReported/notReported.wxss";
+.weui-input{
+  text-align: center;
+}

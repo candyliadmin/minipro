@@ -1,0 +1,116 @@
+<view class="gray-page  border-top-10">
+  <wxs module="m1">
+    var numberToFixed = function(n) {
+      n = +n;
+      n = n ? n.toFixed(2) : '0.00';
+      return n;
+    }
+    var numberToFour = function(n) {
+      n = n.length > 3 ? n.slice(-4) : n;
+      return n;
+    }
+    module.exports.toFixed = numberToFixed;
+    module.exports.toFour = numberToFour;
+  </wxs>
+  <view class="block-content-list">
+    <block wx:if="{{!applySuccess}}">
+      <view class="cash-body">
+        <view class="flex_start">
+          <view style="padding-right:28rpx;">收款账户</view>
+          <picker bindchange="bindPickerChange" value="{{activeIndex}}" range="{{accountType}}" range-key="{{'sunName'}}">
+            <view class="picker flex_start">
+              <image wx:if="{{accountType[activeIndex].sunName}}" src="{{imgUrl}}{{accountType[activeIndex].image}}" style="width:30rpx;height:30rpx;margin-right:10rpx;"></image>
+              <text class="darkblue-color">{{accountType[activeIndex].sunName}}({{accountType[activeIndex].recipientName}})</text>
+            </view>
+          </picker>
+        </view>
+        <view class="spantext" style="margin-top:56rpx;">提现金额</view>
+        <view class="flex_start bold cash-number border-bottom">
+          <view class="cash-number-label">￥</view>
+          <input type="number" placeholder="0.00" class="input-placeholder" value="{{cashAmount}}" bindinput="inputChange"></input>
+        </view>
+        <view class="flex_start margin-t-10" wx:if="{{errIndex==-1}}">
+          <view class="lightgray-color spantext">当前账户可提现余额{{m1.toFixed(accountInfo.withdrawableBalance)}}元</view>
+          <view class="darkblue-color spantext" style="padding:0 20rpx;" bindtap="allCash">全部提现</view>
+        </view>
+        <view class="flex_start margin-t-10" wx:if="{{errIndex>-1}}">
+          <view class="red-color spantext">{{errMsg[errIndex]}}</view>
+        </view>
+      </view>
+      <view class="btn border-radius {{active?'btn-blue':''}}" style="margin:280rpx 40rpx 0 40rpx;" bindtap="gotoVerify">下一步</view>
+    </block>
+    <block wx:else>
+      <view class="">
+        <view class="text-center">
+          <icon type="success" size="40"></icon>
+          <view class="bold" style="font-size:36rpx;margin:32rpx 0;">操作成功</view>
+        </view>
+        <view class="process-success">
+          <view class="process-step">
+            <view class="process-1"></view>
+            <view class="process-title color-gray">发起提现申请</view>
+          </view>
+          <view class="process-border-1"></view>
+          <view class="process-step">
+            <icon type="waiting" size="20"></icon>
+            <view class="process-title">
+              <view>处理中</view>
+              <view class="color-gray">预计{{applyInfo.accountingDate}}前到账</view>
+            </view>
+          </view>
+          <view class="process-border-3"></view>
+          <view class="process-step">
+            <view class="process-3"></view>
+            <view class="process-title color-gray">到账成功</view>
+          </view>
+        </view>
+        <view class="flex__space-between cash-info">
+          <view class="cash-info-label lightgray-color">到账金额</view>
+          <view>¥{{applyInfo.amount}}</view>
+        </view>
+        <view class="flex__space-between cash-info">
+          <view class="cash-info-label lightgray-color">到账账户</view>
+          <view>
+            <view class="text-right">微信账户</view>
+            <view class="text-right">{{applyInfo.accountName}}</view>
+          </view>
+        </view>
+        <view class="flex__space-between cash-info">
+          <view class="cash-info-label lightgray-color">预计到账时间</view>
+          <view>{{applyInfo.accountingDate}}</view>
+        </view>
+        <view class="flex__space-between cash-info">
+          <view class="cash-info-label lightgray-color">手续费</view>
+          <view>¥{{applyInfo.amountFee}}</view>
+        </view>
+      </view>
+      <view class="btn btn-blue border-radius" style="margin:108rpx 40rpx 0 40rpx;" bindtap="gotoBack">完成</view>
+    </block>
+    <view class="weui-demo-dialog {{isConfirm ? 'weui-demo-dialog_show' : ''}}">
+      <view class="weui-mask" bindtap="closeDialog"></view>
+      <view class="weui-half-screen-dialog">
+        <view class="weui-half-screen-dialog__hd">
+          <view class="weui-half-screen-dialog__hd__side">
+            <view bindtap="closeDialog" class="weui-icon-btn weui-icon-btn_close">关闭</view>
+          </view>
+          <view class="weui-half-screen-dialog__hd__main">
+            <text class="weui-half-screen-dialog__title">到账金额</text>
+          </view>
+        </view>
+        <view class="weui-half-screen-dialog__bd">
+          <view class="cash-body text-center">
+            <view class="cash-number bold">¥{{m1.toFixed(cashAmount)}}</view>
+            <view class="margin-b-10">
+              <text class="lightgray-color">手续费</text>
+              <text class="spantext" style="padding-left:24rpx;">¥{{m1.toFixed(accountInfo.serviceCharge)}}</text>
+            </view>
+            <view class="lightgray-color margin-b-10">预计{{arrvialTime}} 24:00前到账</view>
+          </view>
+        </view>
+        <view class="weui-half-screen-dialog__ft">
+          <view class="btn border-radius {{active?'btn-blue':''}}" style="margin:0 40rpx;" bindtap="apply">确认</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

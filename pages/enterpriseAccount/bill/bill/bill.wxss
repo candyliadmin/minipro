@@ -1,0 +1,48 @@
+/* pages/enterpriseAccount/bill/bill.wxss */
+.opration-top {
+    background-color: #fff;
+    overflow: hidden;
+    width: 100%;
+}
+.opration-top-wrap{
+  padding-bottom: 20rpx;
+}
+
+.line-item-wrap .line-item-title {
+    margin-bottom: 8rpx;
+}
+
+.line-item-wrap .line-row {
+    padding-left: 10rpx;
+    margin-bottom: 8rpx;
+}
+
+.person-span {
+    padding-left: 34rpx;
+}
+
+.operation-item .bdicon {
+    width: 38rpx;
+    height: 38rpx;
+    padding-right: 10rpx;
+}
+
+.select-no-border {
+    border: none;
+    background-color: #fff;
+}
+
+.select-no-border::after {
+    color: rgb(153, 153, 153);
+}
+
+.margin-l-50 {
+    margin-left: 50rpx;
+}
+
+.fareClearing {
+    color: rgba(255, 160, 0, 1);
+}
+.operation-item{
+  border-bottom:1rpx solid rgba(0,0,0,.1);
+}

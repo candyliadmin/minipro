@@ -1,0 +1,12 @@
+<view class="margin-t-10">
+  <view class="weui-cells weui-cells_after-title">
+    <view bindtap="gotoList" data-type="day" data-url="../dayList/dayList" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">日报</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </view>
+    <view bindtap="gotoList" data-type="month" data-url="../monthList/monthList" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">月报</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,69 @@
+<view>
+  <view class='login-header weui-flex flex__center'>
+    <image class='login-img' src='../../../image/badiyun-square-logo.png' />
+  </view>
+  <view class='login-header-title flex__center' style='display: flex; flex-direction: column; justify-content: space-around; margin-bottom: 124rpx; height: 60rpx;color:#3B78D6 ;'>
+    <view style='font-weight: 600;'>
+      巴滴云
+    </view>
+  </view>
+  <view wx:if="{{environment=='wxwork'}}" class="block-content-list">
+    <view class="weui-cell {{errorIndex==1?'err':''}}">
+      <view class="weui-cell__hd">
+        <view class="weui-label">手机号</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" type="number" bindinput="bindKeyInput" maxlength="11" placeholder="请输入手机号" />
+      </view>
+    </view>
+    <view class="weui-cell  weui-cell_vcode {{errorIndex==2?'err':''}}" style="margin-bottom:70rpx;">
+      <view class="weui-cell__hd">
+        <view class="weui-label">验证码</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" type="number" maxlength="6" bindinput="bindCodeInput" placeholder="请输入验证码" />
+      </view>
+      <view class="weui-cell__ft">
+        <button type='primary' class="vcode-btn" bindtap="getCode" disabled="{{time>0 || !phone}}">{{time>0?time+'s后重发':codetext}}</button>
+      </view>
+    </view>
+    <view class="error flex_start" wx:if="{{error}}">
+      <i class="iconfont icon-tixing"></i>
+      <text>{{error}}</text>
+    </view>
+    <button type='primary' bindtap="login" disabled="{{!isAgree || error || !phone || !proveCode}}">登入工作手机号</button>
+    <checkbox-group bindchange="bindAgreeChange">
+      <label class="weui-agree text-center" for="weuiAgree">
+        <view class="weui-agree__text">
+          <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
+          <view class="weui-agree__checkbox-icon">
+            <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
+          </view>
+          阅读并同意以下协议
+          <navigator url="licence/licence" class="weui-agree__link">《服务协议》</navigator>
+        </view>
+      </label>
+    </checkbox-group>
+  </view>
+  <view class='login-body' wx:if="{{environment!='wxwork'}}">
+    <view class='login-button'>
+      <button type='primary' hover-class="hoverbtn" open-type="getPhoneNumber" bindgetphonenumber='login' disabled="{{!isAgree}}">登入工作手机号</button>
+      <checkbox-group bindchange="bindAgreeChange">
+        <label class="weui-agree" for="weuiAgree">
+          <view class="weui-agree__text">
+            <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
+            <view class="weui-agree__checkbox-icon">
+              <icon class="weui-agree__checkbox-icon-check" color="#3B78D6" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
+            </view>
+            阅读
+            <navigator url="licence/licence" class="weui-agree__link">《相关条款》</navigator>并同意授权
+          </view>
+        </label>
+      </checkbox-group>
+    </view>
+  </view>
+  <view class="weui-footer" style="position:fixed;bottom:28rpx;width:100%;text-algin:center;">
+    <view class="weui-footer__text">版本号：{{version}}</view>
+    <view class="weui-footer__text">Copyright © 2018-2019 badicloud.com</view>
+  </view>
+</view>

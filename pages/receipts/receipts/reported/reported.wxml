@@ -1,0 +1,54 @@
+<!--pages/receipts/receipts.wxml-->
+<component_bar id="bar" activeIndex="{{activeIndex}}" />
+<wxs module="m1">
+  var numberToFixed = function(n) {
+    n = n ? n.toFixed(2) : 0.00;
+    return n;
+  }
+  module.exports.toFixed = numberToFixed;
+</wxs>
+
+<view class="passenger-con">
+  <view class="date-input flex__space-between" >
+    <!-- <view>日期：</view> -->
+    <picker class="date-picker" mode="date" value="{{day}}" start="" end="{{today}}" bindchange="bindPickChange">
+      <view class="weui-input">{{day || '请选择日期'}}</view>
+      <image src="{{imgUrl}}/common/icon/date.png" style="width:34rpx;" mode="widthFix"></image>
+    </picker>
+    <view class="reset-btn" wx:if="{{day}}" bindtap="clearDay">取消</view>
+  </view>
+  <scroll-view scroll-y style="height:calc(100% - 50rpx);" bindscrolltolower="getMOreList"   wx-if="{{dataList.length > 0}}">
+    <view class="line-item">
+      <view class="weui-slideview" wx:for="{{dataList}}" wx:key="value">
+        <view class="receipts-con flex__space-between">
+          <view>
+            <view class="line-item-title flex_start">
+              <view>发车时间 {{item.departureTime}}</view>
+              <image src="{{imgUrl}}/common/icon/attendant.png" style="width:28rpx;" mode="widthFix" class="receipt-img" wx:if="{{item.receiptType == 'CUSTOM'}}"></image>
+              <image src="{{imgUrl}}/common/icon/driver.png" style="width:28rpx;" mode="widthFix" class="receipt-img" wx:if="{{item.receiptType == 'WORKEFFORT'}}"></image>
+              <i class="iconfont icon-tixing red-color margin-l-10" wx:if="{{item.departureStatus==='ABNORMAL_DEPARTURE'}}"></i>
+            </view>
+            <view class="line-row spantext gray-color">{{item.routeName || ''}}</view>
+            <view class="line-row spantext gray-color">{{item.licensePlate || ''}} {{item.driverName || '-'}}</view>
+            <view class="line-row spantext gray-color">{{directionType[item.routeDirectionId]}}</view>
+          </view>
+          <view class="flex__center-right">
+            <image src="{{imgUrl}}/common/icon/reported.png" mode="widthFix" class="receipt-img margin-b-10" wx:if="{{item.receiptStatus == 'CHECKPENDING'}}" style="width:72rpx;height:72rpx;"></image>
+            <image src="{{imgUrl}}/common/icon/audited.png" mode="widthFix" class="receipt-img margin-b-10" wx:if="{{item.receiptStatus == 'AUDITED'}}" style="width:72rpx;height:68rpx;"></image>
+            <view wx:if="{{item.receiptStatus == 'TIMEOUT'}}" class="bold" style="color:#F56C6C;">
+              <icon type="warn" size="25" color="#F56C6C"></icon> 超时未审批
+            </view>
+            <view class="line-row">合计：
+              <text class="orange-color">¥{{m1.toFixed(item.totalFares || 0)}}</text>
+            </view>
+            <view class="line-row spantext gray-color" wx:if="{{item.day}}">{{item.day}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <component_loadmore loading="{{loading}}" hasmore="{{pageNo<=totalPages && dataList.length>0}}" />
+  </scroll-view>
+  <view wx:if="{{dataList.length==0}}">
+    <component_emptydata bordered="{{false}}" small="{{true}}" />
+  </view>
+</view>

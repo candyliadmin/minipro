@@ -1,0 +1,46 @@
+<view class="gray-page  border-top-10">
+  <wxs module="m1">
+    var numberToFixed = function(n) {
+      n = n ? n.toFixed(2) : 0.00;
+      return n;
+    }
+    module.exports.toFixed = numberToFixed;
+  </wxs>
+  <view class="block-content-list">
+    <view class="cash-header border-bottom">
+      <view class="flex__space-around">
+        <view class="cash-step text-center active">
+          <view class="step-number">
+            <image src="{{imgUrl}}/page/account/gouxuan.png" style="width:26rpx;height:22rpx;"></image>
+          </view>
+          <view>余额提现</view>
+        </view>
+        <view class="cash-step text-center active">
+          <view class="step-number">2</view>
+          <view>身份验证</view>
+        </view>
+        <view class="cash-step text-center">
+          <view class="step-number">3</view>
+          <view>操作成功</view>
+        </view>
+      </view>
+    </view>
+    <view class="cash-body">
+      <view>到账金额</view>
+      <view class="text-center">
+        <view class="cash-number bold">¥5889.00</view>
+        <view>
+          <text class="lightgray-color">手续费</text>
+          <text class="spantext" style="padding-left:24rpx;">¥{{m1.toFixed(accountInfo.serviceCharge)}}</text>
+        </view>
+      </view>
+      <view class="lightgray-color margin-b-10" style="margin:60rpx 0 24rpx 0;">将向操作人手机号：{{phone}}发送验证码</view>
+      <view class="flex_start">
+        <input class="code-input border-radius" type="number" placeholder="请输入短信验证码" placeholder-class="input-placeholder" bindinput="codeChange"></input>
+        <view class="btn btn-green border-radius code-btn" bindtap="getCode">{{isClick?codeMsg:totalTime+'s重新获取'}}</view>
+      </view>
+      <view class="spantext red-color" wx:if="{{showErrorMsg}}">验证码错误</view>
+    </view>
+    <view class="btn border-radius {{active?'btn-green':''}}" style="margin:258rpx 40rpx 0 40rpx;" bindtap="gotoSuccess">下一步</view>
+  </view>
+</view>

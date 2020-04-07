@@ -1,0 +1,72 @@
+<!--pages/dataDetails/dataDetails.wxml-->
+<!-- <view class="receipts-tab">
+  <view class="receipts-tab-item {{index == tabIndex?'active':''}}" wx:for="{{tabArr}}" wx:key="index" bindtap="handleTab" data-index="{{index}}" data-key="{{item.key}}">{{item.name}}
+  </view>
+</view> -->
+
+<wxs module="m1">
+  var numberToFixed = function(n) {
+    n = n ? n.toFixed(2) : 0.00;
+    return n;
+  }
+  module.exports.toFixed = numberToFixed;
+</wxs>
+
+<view class="border-top-10">
+  <view wx:if="{{tabIndex === 0}}">
+    <scroll-view scroll-y bindscrolltolower="getMOreList" style="height:calc(100vh);">
+      <view class="weui-panel weui-panel_access" wx:if="{{incomeList.length>0}}">
+        <view class="weui-panel__bd">
+          <navigator url="oneDetail/oneDetail?oid={{item.orderId}}" class="weui-media-box weui-media-box_text" wx:for="{{incomeList}}" wx:key="index">
+            <view class="lightgray-color spantext" style="margin-bottom:16px;">{{item.orderDate}}</view>
+            <view class="block-title margin-b-10">￥{{m1.toFixed(item.grandTotal)}}</view>
+            <view class="weui-media-box__desc gray-color flex__space-between">
+              <view class="spantext">{{item.routeName || '线路名称'}} {{item.licensePlate || '车牌号'}}</view>
+              <view class="weui-cell__ft_in-access"></view>
+            </view>
+          </navigator>
+        </view>
+      </view>
+      <view wx:if="{{incomeList.length==0}}">
+        <component_emptydata bordered="{{false}}" />
+      </view>
+
+
+    </scroll-view>
+  </view>
+</view>
+
+
+<view class="passenger-con" wx:if="{{tabIndex === 1}}">
+  <view class="date-input flex__space-between">
+    <view>日期：</view>
+    <picker class="date-picker start-date" data-type="start" mode="date" value="{{startday}}" start="" end="{{endday}}" bindchange="bindPickChange">
+      <view class="weui-input">{{startday || '开始日期'}}</view>
+    </picker>
+    <picker class="date-picker end-date" data-type="end" mode="date" value="{{endday}}" start="{{startday}}" end="{{today}}" bindchange="bindPickChange">
+      <view class="weui-input">{{endday || '结束日期'}}</view>
+      <image src="{{imgUrl}}/common/icon/date.png" style="width:34rpx;" mode="widthFix"></image>
+    </picker>
+    <!-- <view class="reset-btn" wx:if="{{startday || endday}}" bindtap="clearDay">重置</view> -->
+  </view>
+  <view class="spantext red-color">* 账单查询以实际出账日期为准（默认4-5个工作日出账）</view>
+  <scroll-view scroll-y bindscrolltolower="getMOreList" style="height:calc(100% - 120rpx);">
+    <view class="datadetail-list" wx:if="{{billList.length>0}}">
+      <view wx:for="{{billList}}" wx:key="index" class="datadetail-item detailbill-item">
+        <view class="flex__space-between">
+          <view>
+            <view class="flex_start">
+              <image class="bdicon" mode="widthFix" src="{{imgUrl}}/common/icon/vehicle-icon.png"></image>
+              <view>{{item.licensePlate || '车牌号'}}</view>
+            </view>
+            <view class="lightgray-color spantext">结算时间：{{item.datePaid}}</view>
+          </view>
+          <view class="tag">￥{{m1.toFixed(item.royaltyAmountSum)}}</view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{billList.length==0}}">
+      <component_emptydata bordered="{{false}}" />
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,13 @@
+@import  '../accountUpdate.wxss';
+.code-input{
+  height: 60rpx;
+  border: 1px solid #999;
+  width: calc(100% - 200rpx);
+  padding: 0 28rpx;
+}
+.code-btn{
+  width: 192rpx;
+  font-size: 28rpx;
+  margin-left: 10rpx;
+  padding: 11rpx 0;
+}

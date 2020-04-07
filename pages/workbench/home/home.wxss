@@ -1,0 +1,59 @@
+@import "../../../lib/style/weui.wxss";
+page {
+  background-color: #f2f2f2;
+}
+
+.main {
+  overflow: hidden;
+  color: #333;
+  font-size: 28rpx;
+}
+
+.grids-wrap {
+  margin-bottom: 150rpx;
+  padding: 18rpx;
+}
+
+.indexcard {
+  margin-bottom: 10rpx;
+  border-radius: 10rpx;
+  background-color: white;
+}
+
+.card-title {
+  font-size: 16px;
+  padding: 10px 16px;
+  color: #8c8c8c;
+}
+
+.weui-grids .weui-grid:nth-child(3n+3){
+  border-right: none;
+}
+
+.weui-grids {
+  border-left: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.weui-grids .weui-grid:nth-last-child(1),
+.weui-grids .weui-grid:nth-last-child(2),
+.weui-grids .weui-grid:nth-last-child(3) {
+  border-bottom: none;
+}
+
+.weui-grid__icon+.weui-grid__label {
+  margin-top: 12px;
+}
+
+.card-content {
+  padding: 0;
+}
+
+.card-content-ios {
+  padding: 0;
+}
+.weui-grid__icon{
+  width: 35px;
+  height: 35px;
+}

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {},
+  "navigationBarTitleText": "扫码发车",
+  "navigationBarBackgroundColor":"#3E7EE2",
+  "backgroundColor":"#3E7EE2",
+  "navigationBarTextStyle":"white",
+  "enablePullDownRefresh":false
+}

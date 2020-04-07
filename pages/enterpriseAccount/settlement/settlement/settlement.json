@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "票款结算",
+  "navigationBarBackgroundColor":"#FF8300",
+  "backgroundColor":"#FF8300",
+  "backgroundColorTop":"#FF8300",
+  "navigationBarTextStyle":"white",
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "component_emptydata": "../../../../components/emptyData/emptyData"
+  }
+}

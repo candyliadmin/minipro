@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "home": "/pages/homepage/homepage/homepage",
+    "workbench": "/pages/workbench/home/home",
+    "about": "/pages/user/user/user"
+  }
+}

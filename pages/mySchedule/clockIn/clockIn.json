@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "component_modal": "../../components/modal/modal"
+  },
+  "navigationBarTitleText": "打卡"
+}

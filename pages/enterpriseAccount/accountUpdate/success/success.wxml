@@ -1,0 +1,50 @@
+<view class="gray-page  border-top-10">
+  <view class="block-content-list">
+    <view class="cash-header border-bottom">
+      <view class="flex__space-around">
+        <view class="cash-step text-center active">
+          <view class="step-number">
+            <image src="{{imgUrl}}/page/account/gouxuan.png" style="width:26rpx;height:22rpx;"></image>
+          </view>
+          <view>账户信息</view>
+        </view>
+        <view class="cash-step text-center active">
+          <view class="step-number">
+            <image src="{{imgUrl}}/page/account/gouxuan.png" style="width:26rpx;height:22rpx;"></image>
+          </view>
+          <view>身份验证</view>
+        </view>
+        <view class="cash-step text-center active">
+          <view class="step-number">3</view>
+          <view>操作成功</view>
+        </view>
+      </view>
+    </view>
+    <view class="cash-body" style="padding-top:45rpx;">
+      <view class="text-center">
+        <icon type="success" size="113"></icon>
+        <view class="bold" style="font-size:36rpx;margin:32rpx 0;">操作成功</view>
+      </view>
+      <view class="process-success">
+        <view class="process-step">
+          <view class="process-1"></view>
+          <view class="process-title color-gray">发起重新绑定账户申请</view>
+        </view>
+        <view class="process-border-1"></view>
+        <view class="process-step">
+          <icon type="waiting" size="20" ></icon>
+          <view class="process-title">
+            <view>银行处理中</view>
+            <view class="color-gray">24小时之内审核完成</view>
+          </view>
+        </view>
+        <view class="process-border-3"></view>
+        <view class="process-step">
+          <view class="process-3"></view>
+          <view class="process-title color-gray">绑定成功</view>
+        </view>
+      </view>
+    </view>
+    <view class="btn btn-green border-radius" style="margin:108rpx 40rpx 0 40rpx;" bindtap="gotoBack">完成</view>
+  </view>
+</view>

@@ -1,0 +1,16 @@
+/* pages/operationManage/operationManage.wxss */
+.line-item-wrap .line-row{
+  padding-left: 20rpx;
+}
+.line-item-wrap view{
+  margin-bottom: 8rpx;
+}
+.operation-line.line-item{
+  padding: 14rpx 0 0 20rpx;
+}
+.block-content-list .operation-line:last-of-type .border-bottom{
+  border: none;
+}
+.operation-line .bdicon{
+  margin-left: -24rpx;
+}

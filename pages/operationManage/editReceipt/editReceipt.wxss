@@ -1,0 +1,96 @@
+
+.weui-cell_select{
+  overflow: hidden;
+}
+.weui-select{
+  border-right: none;
+  white-space: nowrap;
+}
+.weui-cell.disabled{
+  color: #999999;
+}
+.weui-select.nobefore:before{
+  width: 0;
+  height: 0;
+  border: none;
+}
+.add-title{
+  padding: 30rpx 0 26rpx 0;
+  font-size: 34rpx;
+  margin: 0 32rpx;
+}
+
+button.white-btn{
+  background-color: #fff;
+  color: #666666;
+}
+button.gray-btn{
+  background-color: #ddd;
+  color: #fff;
+}
+button.gray-btn::after{
+  border-color: transparent;
+}
+button.gray-btn{
+  background-color: #ddd;
+  color: #fff;
+}
+button.gray-btn.active{
+  background-color: #3B78D6;
+}
+.weui-demo-dialog{
+  visibility:hidden;
+  opacity:0;
+  transition:opacity .3s;
+}
+.weui-demo-dialog_show{
+  visibility:visible;
+  opacity:1;
+}
+
+.clock-wrap{
+  padding: 30rpx 30rpx 0 30rpx;
+}
+.clock-item{
+  position: relative;
+  min-height: 120rpx;
+  font-size: 28rpx;
+}
+.clock-item::after{
+  content: '';
+  width: 2rpx;
+  height: 100%;
+  background-color: #CCCCCC;
+  position: absolute;
+  left: 8rpx;
+  top: 15rpx;
+}
+.clock-item:last-of-type::after{
+  background-color: transparent;
+}
+.clock-item.active .clock-item-title::before{
+  background-color: #3B78D6;
+}
+.clock-item-title{
+  font-size: 28rpx;
+  color: #000;
+}
+.clock-item-title::before{
+  content: '';
+  display: inline-block;
+  width: 18rpx;
+  height: 18rpx;
+  border-radius: 100%;
+  background-color: #CCCCCC;
+  margin-right: 30rpx;
+  position: relative;
+  z-index: 1;
+}
+.clock-item-con{
+  padding-left: 44rpx;
+}
+.absolute-pos{
+  padding-right: 30px;
+  padding-bottom: 15rpx;
+  margin-top: -10px;
+}

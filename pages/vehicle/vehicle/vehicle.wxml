@@ -1,0 +1,40 @@
+<view>
+  <view class="search-header">
+    <SearchBar id="SearchBar" placeholderMsg="请输入车辆名称" searchstr="{{searchstr}}" bind:searchList="searchList" bind:endsearchList="endsearchList" bind:cancelsearch="cancelsearch" bind:activity_clear="activity_clear" bind:addhandle="addhandle">
+    </SearchBar>
+  </view>
+  <scroll-view scroll-y bindscrolltolower="getMOreList" style="height:calc(100% - 100rpx);" wx:if="{{carList.length>0}}">
+  <view class="passenger-con">
+    <view class="weui-panel weui-panel_access">
+      <view class="weui-panel__ft" bindtap="showVehiclePos">
+        <view class="weui-cell weui-cell_access weui-cell_link">
+          <view class="weui-cell__bd">查看位置</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+      </view>
+      <view class="weui-panel__bd">
+        <view class="weui-cells weui-cells_after-title">
+          <navigator url="detail/detail?id={{car.id}}" wx:for="{{carList}}" wx:key="index" wx:for-item="car" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__bd">
+              <view class="flex_start margin-b-10">
+                <view>{{car.licensePlate || '车牌号'}}</view>
+                <view class="linetype-tag margin-l-10" wx:if="{{vehicleType[car.type]}}">{{vehicleType[car.type]}}</view>
+              </view>
+              <view class="lightgray-color spantext">席位数:{{car.numberOfSeats || '未设置'}}</view>
+            </view>
+            <view class="weui-cell__ft" catchtap="goVehicleMonitor">
+              <i class="iconfont icon-jiankong blue-color" style="font-size:50rpx;"></i>
+            </view>
+          </navigator>
+        </view>
+      </view>
+    </view>
+    <view class="empty-data" wx:if="{{carList.length==0}}">
+      <component_emptydata bordered="{{false}}" />
+    </view>
+  </view>
+  </scroll-view>
+  <view class="receipts-bottom">
+    <button class="white-btn" bindtap="addVehicle" style="color:#3B78D6">添加车辆</button>
+  </view>
+</view>

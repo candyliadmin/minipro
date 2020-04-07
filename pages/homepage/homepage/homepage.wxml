@@ -1,0 +1,127 @@
+<view class="hasbar-main">
+  <wxs src="./../../../utils/common.wxs" module="tools" />
+  <view class="bg-white" wx:if="{{notice.system.length>0}}">
+    <view class="bdy-alert bdy-alert-red">
+      <i class="iconfont icon-tixing text-red text-bold"></i>
+      <text>【系统通知】所有司机于12月30日集中开会！</text>
+    </view>
+  </view>
+  <view class="index-block bg-white">
+    <view class="index-userinfo">
+      <view class="user-avatar">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <view class="user-infors">
+        <view>
+          <text class="text-lg">欢迎您！{{accountInfo.name}}</text>
+        </view>
+        <view class="text-sm">{{accountInfo.agency.name}}</view>
+        <navigator url="/pages/user/userInfo/userInfo" class="bay-btn sm">查看详情
+          <i class="iconfont icon-right text-sm"></i>
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <view class="bg-gray margin-b-40" wx:if="{{notice.message.length>0}}">
+    <view class="bdy-alert bdy-alert-gray">
+      <i class="iconfont icon-notice text-orange"></i>
+      <text>【系统通知】所有司机于12月30日集中开会！</text>
+    </view>
+  </view>
+  <view class="index-block bg-white no-t-padding">
+    <view class="index-block-title">
+      <view>常用功能</view>
+    </view>
+    <view class="bdy-grids">
+      <navigator url="{{item.navUrl}}" class="bdy-grid" wx:for="{{grids}}" wx:key="index">
+        <image src="{{item.imgUrl}}" class="grid-icon"></image>
+        <text class="grid-text">{{item.text}}</text>
+      </navigator>
+    </view>
+  </view>
+  <view class="index-block bg-white margin-t-20" wx:if="{{isManage}}">
+    <view class="index-block-title">
+      <view>数据面板</view>
+    </view>
+    <view>
+      <view class="tabs text-md text-bold">
+        <view class="tab-item {{index === dataTabActive?'active':''}}" wx:for="{{dataTab}}" wx:key="index" data-index="{{index}}" bindtap="handDataTab">
+          {{item.name}}
+          <text class="text-sm" wx:if="{{index === dataTabActive}}">（{{item.date}}）</text>
+        </view>
+      </view>
+      <view class="data-panel margin-t-20 text-lg">
+        <navigator url="/pages/overview/overview" class="data-panel-item shadow">
+          <i class="data-panel-bg iconfont icon-shouru" style="color:#D46A26;"></i>
+          <view class="text-gray">总收入</view>
+          <view class="text-reddark">
+            <text class="text-bold">{{tools.toFixed(dataPanel.generalIncome) || '0.00'}}</text>元</view>
+        </navigator>
+        <navigator url="/pages/dataDetails/dataDetails" class="data-panel-item shadow">
+          <i class="data-panel-bg iconfont icon-dingdan" style="color:#FFA128;"></i>
+          <view class="text-gray">订单数</view>
+          <view class="text-reddark">
+            <text class="text-bold">{{dataPanel.orderQuantity || 0}}</text>单</view>
+        </navigator>
+        <navigator url="/pages/line/line" class="data-panel-item shadow">
+          <i class="data-panel-bg iconfont icon-xianlu1" style="color:#1CC289;"></i>
+          <view class="text-gray">线路</view>
+          <view class="text-green">
+            <text class="text-bold">{{dataPanel.routeQuantity || 0}}</text>条</view>
+        </navigator>
+        <navigator url="/pages/operationManage/operationManage" class="data-panel-item shadow">
+          <i class="data-panel-bg iconfont icon-banci" style="color:#77C21C;"></i>
+          <view class="text-gray">班次</view>
+          <view class="text-green">
+            <text class="text-bold">{{dataPanel.tripQuantity || 0}}</text>班</view>
+        </navigator>
+        <navigator url="/pages/vehicle/vehicle/vehicle" class="data-panel-item shadow">
+          <i class="data-panel-bg iconfont icon-cheliang1" style="color:#3F6EFF;font-size:80rpx;"></i>
+          <view class="text-gray">营运车辆</view>
+          <view class="text-blue">
+            <text class="text-bold">{{dataPanel.operatingVehicle || 0}}/</text>{{dataPanel.generalVehicle || 0}}辆</view>
+        </navigator>
+        <navigator url="/pages/driveAndPassenger/driveAndPassenger" class="data-panel-item shadow">
+          <i class="data-panel-bg iconfont icon-yuangong" style="color:#1FB2DE;"></i>
+          <view class="text-gray">营运员工</view>
+          <view class="text-blue">
+            <text class="text-bold">{{dataPanel.operatingEmployee || 0}}/</text>{{dataPanel.generalEmployee || 0}}名</view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <navigator url="/pages/enterpriseAccount/account/account" class="index-block bg-white margin-t-20"  wx:if="{{isManage}}">
+    <view class="index-block-title">
+      <view>账户余额</view>
+    </view>
+    <view class="index-account text-center">
+      <view class="text-reddark index-account-title">¥{{tools.toFixed(account.totalBalance) || '0.00'}}</view>
+      <view class="text-xl text-gray">余额</view>
+    </view>
+  </navigator>
+  <view class="index-block bg-white margin-t-20 no-w-padding"  wx:if="{{!isManage}}">
+    <view class="index-block-title">
+      <view>我的排班</view>
+    </view>
+    <view>
+      <view class="tabs text-md text-bold">
+        <view class="tab-item {{index === scheduleTabActive?'active':''}}" wx:for="{{scheduleTab}}" wx:key="index" data-index="{{index}}" bindtap="handScheduleTab">
+          {{item.name}}
+          <text class="text-sm" wx:if="{{index === scheduleTabActive}}">（{{item.date}}）</text>
+        </view>
+      </view>
+      <view class="schedule-panel {{scheduleList.length==0?'nodata':''}}">
+        <view class="weui-cells weui-cells_after-title">
+          <navigator url="/pages/mySchedule/mySchedule/mySchedule" class="weui-cell weui-cell_access flex_start-start" hover-class="weui-cell_active" wx:for="{{scheduleList}}" wx:key="id" wx:if="{{index<3}}">
+            <view class="weui-cell__hd padding-r-10 text-darkblack">{{item.departureTime}}</view>
+            <view class="weui-cell__bd">
+              <view class="text-darkblack">{{item.routeName}}</view>
+              <view class="text-sm text-grey">{{directionType[item.directionId]}}</view>
+            </view>
+            <view class="weui-cell__ft text-sm text-darkblack">{{item.licensePlate}}</view>
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

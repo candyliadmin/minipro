@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "员工工单",
+  "usingComponents": {
+    "component_emptydata": "/components/emptyData/emptyData"
+  }
+}

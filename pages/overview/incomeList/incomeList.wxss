@@ -1,0 +1,10 @@
+/* pages/overview/incomeList/incomeList.wxss */
+.income-item{
+  font-size: 28rpx;
+  border-bottom:1px solid #ddd; 
+  padding: 24rpx 0;
+}
+.income-item i{
+  padding: 0 10rpx;
+  font-size: 24rpx;
+}

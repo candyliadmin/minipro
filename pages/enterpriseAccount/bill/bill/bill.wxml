@@ -1,0 +1,59 @@
+<!-- pages/enterpriseAccount/bill/bill.wxml -->
+<view class="border-top-10">
+  <wxs module="m1">
+    var numberToFixed = function(n) {
+      n = n ? n.toFixed(2) : 0.00;
+      return n;
+    }
+    module.exports.toFixed = numberToFixed;
+  </wxs>
+  <view class="block-content-list">
+    <view class="opration-top">
+      <view class="opration-top-wrap border-bottom">
+        <view style="width:50%;" class="fr">
+          <view class="select-wrap">
+            <view class="select-box select-no-border">
+              <picker bindchange="bindPickerChange" value="{{billIndex}}" range="{{billSelect}}" range-key="name">
+                <view class="picker select-picker">{{billSelect[billIndex]['name'] }}</view>
+              </picker>
+            </view>
+          </view>
+        </view>
+        <view style="width:40%">
+          <view class="select-wrap">
+            <view class="select-box select-no-border">
+              <picker bindchange="bindPickerTimeChange" mode="date" value="{{date}}" fields="month">
+                <view class="picker select-picker">{{dateArr[0]}}年{{dateArr[1]}}月</view>
+              </picker>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <scroll-view scroll-y bindscrolltolower="getMOreList" style="height:calc(100vh - 130rpx);" wx:if="{{operationList.length>0}}">
+      <view wx:for="{{operationList}}" class="line-item operation-item" wx:key="id">
+        <view class="line-item-wrap  flex__space-between " bindtap='navigate' data-type="{{item.type}}" data-id="{{item.id}}">
+          <view class="line-item-title">
+            <view>
+              <image class="bdicon" mode="widthFix" src="{{imgUrl}}{{type[item.type]['icon']}}"></image>
+              {{type[item.type]['name']}}
+            </view>
+            <view class="lightgray-color margin-l-50 spantext">{{item.createdTime}}</view>
+          </view>
+          <view class="line-row text-right">
+            <view class="bold  {{item.type=='fareClearing' ? 'fareClearing' : ''}}">
+              {{item.amount>0?'+':''}}{{m1.toFixed(item.amount) || '0.00'}}
+            </view>
+            <view wx:if="{{item.type=='WITHDRAW' && item.amountFee}}" class="lightgray-color spantext">
+              包含手续费￥{{item.amountFee}}
+            </view>
+          </view>
+        </view>
+      </view>
+      <component_loadmore loading="{{loading}}" hasmore="{{pageNo<=totalPages && operationList.length>0}}" />
+    </scroll-view>
+    <view wx:if="{{operationList.length==0}}" style="height:calc(100vh - 130rpx);">
+      <component_emptydata bordered="{{false}}" small="{{true}}" />
+    </view>
+  </view>
+</view>

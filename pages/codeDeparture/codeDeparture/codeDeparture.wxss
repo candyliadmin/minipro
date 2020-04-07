@@ -1,0 +1,71 @@
+page{
+  background-color: #3E7EE2;
+  position: relative;
+}
+.code-block{
+  padding: 50rpx 0;
+  background-color: #fff;
+  margin: 80rpx 0 32rpx 0;
+}
+.code-username{
+  font-size: 32rpx;
+}
+swiper{
+  height: 1120rpx;
+}
+.img-box{background-color: #fff;position: relative;margin:32rpx 0;}
+.img-box image{width: 436rpx;height: 436rpx;background-color: #f9f9f9;margin: 0 auto;}
+.canvas-box{position: fixed;top:999999rpx;left: 0}
+
+.btn.btn-blue{
+  border-radius: 50rpx;
+  padding: 10rpx 0;
+  width: 40%;
+  margin: 60rpx auto 0 auto;
+}
+.fixbg{
+  padding: 0 28rpx;
+  box-sizing: border-box;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 2rpx;
+  z-index: -1;
+}
+.print-code{
+  width: 750rpx;
+  box-sizing: border-box;
+  font-size: 34rpx;
+  background-color: #006C00;
+  color: #fff;
+}
+.print-head{
+  width: 370rpx;
+  margin: 0 auto;
+  padding: 18rpx 0;
+}
+.print-username{
+  font-size: 56rpx;
+}
+.print-role{
+  font-size: 48rpx;
+  color: #ddd;
+}
+.print-body{
+  background-color: #fff;
+  padding: 60rpx 110rpx 0 110rpx;
+}
+.print-body image{
+  width: 100%;
+  height: 526rpx;
+}
+.print-desc{
+  font-size: 44rpx;
+  color: #9A9A9A;
+  padding: 30rpx 0 47rpx 0;
+}
+.print-footer image{
+  width: 382rpx;
+  height: 79rpx;
+  padding: 37rpx 0 32rpx 0;
+}

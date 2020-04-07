@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "工单统计",
+  "usingComponents": {
+    "component_loadmore": "../../components/loadMore/loadMore"
+  }
+}

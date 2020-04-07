@@ -1,0 +1,70 @@
+<view class="gray-page border-top-10">
+  <view class="block-content-list">
+    <view class="info-header border-bottom">
+      <view class="flex__space-between" style="padding-bottom:26rpx;">
+        <view class="flex_start">
+          <image wx:if="{{!isQiye}}" src="{{imgUrl}}/page/account/geren.png" style="width:40rpx;height:40rpx;margin:0 30rpx 0 14rpx;"></image>
+          <image wx:if="{{isQiye}}" src="{{imgUrl}}/page/account/qiye.png" style="width:40rpx;height:40rpx;margin:0 30rpx 0 14rpx;"></image>
+          <view style="font-size:32rpx;" class="bold">{{isQiye?'企业账户':'个人账户'}}</view>
+        </view>
+        <image bindtap="showDetail" wx:if="{{!isOpenEye}}" src="{{imgUrl}}/page/account/yingcang.png" style="width:40rpx;height:40rpx;"></image>
+        <image bindtap="showDetail" wx:if="{{isOpenEye}}" src="{{imgUrl}}/page/account/xianshi.png" style="width:40rpx;height:40rpx;"></image>
+      </view>
+    </view>
+    <view class="spantext info-body" wx:if="{{isQiye}}">
+      <view class="flex__space-between">
+        <view class="gray-color">企业名称</view>
+        <view>{{account.agencyname}}</view>
+      </view>
+      <view class="flex__space-between">
+        <view class="gray-color">营业执照编号</view>
+        <view>{{account.businessLicenseNo}}</view>
+      </view>
+      <view class="flex__space-between">
+        <view class="gray-color">法人姓名</view>
+        <view>{{account.username}}</view>
+      </view>
+      <view class="flex__space-between">
+        <view class="gray-color">法人身份证号</view>
+        <view>{{account.idcard}}</view>
+      </view>
+      <view class="flex__space-between">
+        <view class="gray-color">银行卡绑定手机号</view>
+        <view>{{account.tel}}</view>
+      </view>
+      <view class="flex__space-between">
+        <view class="gray-color">银行类型</view>
+        <view>{{account.bank}}</view>
+      </view>
+      <view class="flex__space-between">
+        <view class="gray-color">银行卡号</view>
+        <view>{{account.card}}</view>
+      </view>
+    </view>
+    <view class="spantext info-body" wx:else>
+      <view class="flex__space-between">
+        <view class="gray-color">开户人姓名</view>
+        <view>{{account.username}}</view>
+      </view>
+      <view class="flex__space-between">
+        <view class="gray-color">银行卡绑定手机号</view>
+        <view>{{account.tel}}</view>
+      </view>
+      <view class="flex__space-between">
+        <view class="gray-color">银行类型</view>
+        <view>{{account.bank}}</view>
+      </view>
+      <view class="flex__space-between">
+        <view class="gray-color">银行卡号</view>
+        <view>{{account.card}}</view>
+      </view>
+    </view>
+    <view class="btn {{isQiye?'':'btn-green'}} border-radius" bindtap="editInfo" style="margin:300rpx 54rpx 26rpx 54rpx;">申请修改</view>
+    <view class="text-center">
+      <navigator url="../accountHistory/accountHistory" class="com-problem lightgray-color" style="border-color:#999;">历史申请记录</navigator>
+    </view>
+    <view class="text-center" style="margin-top:100rpx;">
+      <navigator url="/pages/common/problem/problem" class="com-problem">常见问题</navigator>
+    </view>
+  </view>
+</view>

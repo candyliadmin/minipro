@@ -1,0 +1,42 @@
+/* pages/overview/vehicleIncome/vehicleIncome.wxss */
+.vehicle-income-page{
+}
+.title-bg{
+  width: 100%;
+  position: relative;
+  height: 200rpx;
+}
+.title-bg image{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+.vehicle-income-title{
+  font-size: 46rpx;
+  font-weight: bold;
+}
+.title-content{
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 32rpx;
+  color: #fff;
+  height: 100%;
+}
+.vehicle-income-item{
+  padding: 15rpx 0;
+  border-bottom: 1px solid #DDDDDD;
+}
+.vehicle-income-list .vehicle-income-item:nth-last-child(2){
+  border-bottom: none;
+}
+.vehicle-income-item .bdicon{
+  width: 32rpx;
+  height: 32rpx;
+  padding: 0rpx 8rpx 0 0;
+}

@@ -1,0 +1,66 @@
+page{
+  background-color: #fff;
+}
+.page{
+  padding: 20rpx 32rpx;
+}
+.login-header {
+  padding: 100rpx 0 20rpx 0;
+}
+
+.login-img {
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.login-button{
+  margin: 80rpx 48rpx;
+}
+button[type=primary]{
+  background-color: #3B78D6;
+}
+button[disabled][type=primary],button.hoverbtn{
+  background-color:rgba(59, 120, 214, 0.42);
+}
+button.vcode-btn[disabled][type=primary]{
+  background-color:#DDDDDD;
+  color: #fff;
+}
+button::after{
+  border: none;
+}
+.block-content-list{
+  padding: 0 60rpx;
+  margin-top: -32rpx;
+  position: relative;
+}
+.error{
+  position: absolute;
+  top: 230rpx;
+  left: 0;
+  width: 100%;
+  padding: 0 80rpx;
+  box-sizing: border-box;
+  color: #DA4C32;
+  font-size: 24rpx;
+}
+.weui-cell:before{
+  border-top: none;
+}
+.weui-cell{
+  border-bottom: 1rpx solid #DDDDDD;
+  margin-bottom: 40rpx;
+  clear: both;
+}
+.weui-label{
+  width: 157rpx;
+}
+.vcode-btn{
+  font-size: 28rpx;
+}
+.weui-cell_vcode{
+  padding-bottom: 14rpx;
+}
+.weui-cell.err{
+  color: #DA4C32;
+}

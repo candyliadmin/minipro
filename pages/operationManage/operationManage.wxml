@@ -1,0 +1,28 @@
+<!--pages/operationManage/operationManage.wxml-->
+<view>
+  <view class="search-header">
+    <SearchBar id="SearchBar" placeholderMsg="请输入路线名称" searchstr="{{searchstr}}" bind:searchList="searchList" bind:endsearchList="endsearchList" bind:cancelsearch="cancelsearch" bind:activity_clear="activity_clear" bind:addhandle="addhandle">
+    </SearchBar>
+  </view>
+  <view class="search-content" style="padding-top:120rpx;">
+    <view class="block-content-list" wx:if="{{lineList.length>0}}">
+      <view wx:for="{{lineList}}" class="line-item operation-line" wx:key="index">
+        <view bindtap="gotoEdit" data-rid="{{item.id}}"data-rdir="{{item.directionId}}" data-index="{{index}}" class="border-bottom" style="padding:15rpx 0;">
+          <view class="line-item-wrap">
+            <view class="line-item-title block-title">
+              <image class="bdicon" mode="widthFix" src="{{imgUrl}}/common/icon/line-icon.png"></image>
+              {{item.shortName}}
+              <view class="btn-border spantext fr" bindtap="showDriverPassengerPos" style="background:none;">
+                <i class="iconfont icon-right"></i>
+              </view>
+            </view>
+            <view class="line-row spantext lightgray-color">{{item.longName}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{lineList.length==0}}">
+    <component_emptydata bordered="{{false}}"/>
+  </view>
+</view>

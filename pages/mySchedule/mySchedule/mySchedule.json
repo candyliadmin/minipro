@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "我的排班",
+  "usingComponents": {
+    "component_emptydata": "../../../components/emptyData/emptyData",
+    "component_loadmore": "../../../components/loadMore/loadMore"
+  }
+}

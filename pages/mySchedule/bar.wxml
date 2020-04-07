@@ -1,0 +1,19 @@
+<template name="sheduleBar">
+  <view class="tab-bar cu-bar" style="bottom:0;">
+    <navigator open-type="redirect" url="/pages/mySchedule/mySchedule/mySchedule" class="menu-item {{!tabBar.index?'active':''}}" hover-class="menu-item-active">
+      <image src="/image/tabbar/paiban-select.png" class="img img1"></image>
+      <image src="/image/tabbar/paiban.png"  class="img img2" ></image>
+      <text>排班</text>
+    </navigator>
+    <navigator  open-type="redirect" url="/pages/mySchedule/scheduleRecord/scheduleRecord" class="menu-item {{tabBar.index==1?'active':''}}" hover-class="menu-item-active">
+      <image src="/image/tabbar/jilu-select.png" class="img img1"></image>
+      <image src="/image/tabbar/jilu.png"  class="img img2" ></image>
+      <text>记录</text>
+    </navigator>
+    <navigator  open-type="redirect" url="/pages/mySchedule/statistics/statistics" class="menu-item {{tabBar.index==2?'active':''}}" hover-class="menu-item-active">
+      <image src="/image/tabbar/tongji-select.png" class="img img1"></image>
+      <image src="/image/tabbar/tongji.png"  class="img img2" ></image>
+      <text>统计</text>
+    </navigator>
+  </view>
+</template>

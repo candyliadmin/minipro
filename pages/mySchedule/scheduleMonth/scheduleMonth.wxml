@@ -1,0 +1,39 @@
+<!--pages/mySchedule/mySchedule.wxml-->
+<view class="">
+  <view class="block-title schedule-title flex__space-between">
+    <view class="date-opt-btn" bindtap="setDate" data-day="-1">上月</view>
+    <view class="select-wrap">
+      <view class="select-box select-no-border">
+        <picker bindchange="bindPickerChange" mode="date" fields="month" value="{{date}}" end="{{today}}">
+          <view class="picker select-picker">{{dateArr[0]}}年{{dateArr[1]}}月</view>
+        </picker>
+      </view>
+    </view>
+    <view class="date-opt-btn {{today<=date?'disabled':''}}" bindtap="setDate" data-day="1">下月</view>
+  </view>
+  <view class="gray-page border-top-10">
+    <scroll-view scroll-y style="height:calc(100vh - {{type==1?'90':'180'}}rpx);background-color:#fff;">
+      <view class="statistic-con">
+        <view bindtap="gotoList" data-index="{{index}}" wx:for="{{scheduleList}}" wx:key="index" class="line-item border-bottom margin-b-10">
+          <view class="line-item-wrap">
+            <view class="line-item-title flex_start">
+              <text class="bold">{{item.day}}</text>
+            </view>
+            <view class="flex__space-between">
+              <view class="line-row spantext gray-color">运营单次：{{item.times || 0}}（全程{{item.times || 0}}，短线0）</view>
+              <i class="iconfont icon-right spantext"></i>
+            </view>
+          </view>
+        </view>
+      </view>
+      <component_loadmore loading="{{loading}}" hasmore="{{pageNo<=totalPages && scheduleList.length>0}}" wx:if="{{totalPages>1}}" />
+    </scroll-view>
+  </view>
+</view>
+<navigator url="/pages/codeDeparture/codeDeparture/codeDeparture" class="fix-code" hover-class="fix-code-active">
+  <image src="/image/common/fix-code.png" mode="widthFix"></image>
+</navigator>
+<block wx:if="{{type!=1}}">
+<import src="../bar.wxml" />
+<template is="sheduleBar" data="{{tabBar}}" />
+</block>

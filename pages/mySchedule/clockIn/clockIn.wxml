@@ -1,0 +1,94 @@
+<view>
+  <view class="line-item border-bottom">
+    <view class="line-item-wrap">
+      <view class="flex__space-between">
+        <view class="line-item-title flex_start">
+          <view class="bold text-md">班次 {{scheduleInfo.departureTime}}</view>
+        </view>
+        <view class="spantext">{{scheduleInfo.licensePlate}}</view>
+      </view>
+      <view class="flex__space-between" style="align-items:flex-start;">
+        <view>
+          <view class="line-row spantext lightgray-color">线路：{{scheduleInfo.routeName}}</view>
+          <view class="line-row spantext lightgray-color">{{scheduleInfo.roleType == 0?'乘务员：':'驾驶员：'}}
+            <block wx:key="id" wx:for="{{scheduleInfo.partner}}" wx:for-item="partner">{{partner.name || ''}} </block>
+          </view>
+        </view>
+        <view class="spantext lightgray-color">{{directionType[scheduleInfo.directionId]}}</view>
+      </view>
+      <view class="spantext text-blue margin-t-10">(发车时间在班次时间前后30分钟外将记为异常)</view>
+    </view>
+  </view>
+  <view class="block-content-list" style="padding:40rpx;">
+    <view class="clock-item {{item.type<=state?'active':''}}" wx:for="{{clockList}}" wx:key="index">
+      <view class="clock-item-title">{{item.name}}{{item.data.formatDate || ''}}</view>
+      <view class="clock-item-con" wx:if="{{item.type===state}}">
+        <view class="clock-button-wrap">
+          <view class="clock-button"  bindtap="clockInHandle" data-type="{{item.type}}">
+            <view class="clock-button-border" animation="{{animationData}}"></view>
+            <view class="clock-button-border w-80" animation="{{animationData1}}"></view>
+            <view class="clock-button-content">
+              <view class="clock-button-text">{{canClock?item.name:'定位中'}}</view>
+              <view class="clock-button-time">{{btnText}}</view>
+            </view>
+          </view>
+        </view>
+        <view class="text-gray flex_start padding-b-30">
+          <view><i class="iconfont icon-dingwei"></i>{{address}}</view>
+          <view class="bay-btn.under" bindtap="getCurrentPos">重新定位</view>
+        </view>
+      </view>
+      <view class="clock-item-con" wx:if="{{item.type<state}}">
+        <view class="flex_start">
+          <view class="clock-history-title">打卡时间{{item.data.formatHour}}</view>
+          <view class="text-red flex_start padding-l-30" wx:if="{{scheduleInfo.clockStatus==='ABNORMAL_DEPARTURE'  && item.type===0}}">
+            <icon type="warn" size="16"></icon>
+            <text class="padding-l-20">异常</text>
+          </view>
+        </view>
+        <view class="text-gray flex_start">
+          <view><i class="iconfont icon-dingwei"></i>{{item.data.address}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+    <!-- <view wx:if="{{scheduleInfo.clockValue>=1}}">
+      <view class="text-center">
+        <icon type="success" size="93"></icon>
+        <view class="block-title margin-t-20">打卡已完成</view>
+      </view>
+      <view class="text-center spantext red-color flex_start flex__center" wx:if="{{scheduleInfo.clockStatus==='ABNORMAL_DEPARTURE'}}">
+        <i class="iconfont icon-tixing"></i>
+        <text>发车时间异常</text>
+      </view>
+      <view class="weui-flex clock-item" wx:for="{{scheduleInfo.attendanceSet}}" wx:key="index">
+        <block wx:if="{{index == 0}}">
+          <view class="clock-lable">发车打卡</view>
+          <view>
+            <view>{{clockInState[index].text}}时间：{{item.time}}</view>
+            <view>{{clockInState[index].text}}定位：{{item.address}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+    <view wx:if="{{scheduleInfo.clockValue==0}}">
+      <view class="text-center">
+        <view class="time-title">{{btnText}}</view>
+        <view style="padding-bottom:28rpx;">
+          <image style="width:40rpx;height:48rpx;" mode="widthFix" src="{{imgUrl}}/common/icon/location-icon.png"></image>
+        </view>
+        <view class="gray-color" style="padding-bottom:200rpx;">位置：{{address}}</view>
+        <view class="flex_start flex__center" style="padding-bottom:100rpx;">
+          <view class="clockin-btn" bindtap="clockInHandle" data-type="0" wx:if="{{scheduleInfo.clockValue==0}}">发车打卡</view>
+        </view>
+      </view>
+    </view> -->
+  <component_modal show="{{showModal}}" bind:confirm="handknow" confirmText="知道了" showCancel="{{false}}">
+    <view slot="body">
+      <image src="{{imgUrl}}/ui1-4/clockin-confirm.png" mode="widthFix" class="modal-image"></image>
+      <view class="text-center modal-head">{{btnText}}</view>
+      <view class="text-center {{isWarn?'text-red':'text-blue'}}">{{isWarn?'打卡成功,打卡时间异常':'打卡成功'}}</view>
+    </view>
+  </component_modal>
+</view>

@@ -1,0 +1,17 @@
+page{
+  background-color: #fff;
+}
+.problem-title{
+  padding: 0 14rpx 27rpx 14rpx;
+}
+.problem-img{
+  width: 38rpx;
+  height: 38rpx;
+  padding: 0 24rpx 0 14rpx;
+}
+.problem-name{
+  font-size: 32rpx;
+}
+.problem-content{
+  padding-left: 76rpx;
+}

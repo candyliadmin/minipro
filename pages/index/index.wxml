@@ -1,0 +1,23 @@
+<home wx:if="{{PageCur=='homepage'}}"></home>
+<workbench wx:if="{{PageCur=='workbench'}}"></workbench>
+<about wx:if="{{PageCur=='mine'}}"></about>
+<view class="bdy-bar tabbar bg-white foot">
+  <view class="action" bindtap="NavChange" data-cur="homepage">
+    <view class='cuIcon-cu-image'>
+      <image src="/image/tabbar/dengche{{PageCur=='homepage'?'-select':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='homepage'?'text-blue':'text-gray'}}">首页</view>
+  </view>
+  <view class="action" bindtap="NavChange" data-cur="workbench">
+    <view class='cuIcon-cu-image'>
+      <image src="/image/tabbar/workbench{{PageCur=='workbench'?'-select':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='workbench'?'text-blue':'text-gray'}}">工作台</view>
+  </view>
+  <view class="action" bindtap="NavChange" data-cur="mine">
+    <view class='cuIcon-cu-image'>
+      <image src="/image/tabbar/my{{PageCur=='mine'?'-select':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='mine'?'text-blue':'text-gray'}}">我的</view>
+  </view>
+</view>

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "月报",
+  "usingComponents": {
+    "component_emptydata": "/components/emptyData/emptyData"
+  }
+}

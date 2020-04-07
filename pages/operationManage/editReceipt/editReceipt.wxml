@@ -1,0 +1,119 @@
+<view class="margin-t-10">
+  <view class="weui-panel clock-wrap" wx:if="{{detailInfo != null}}">
+    <view class="clock-item {{detailInfo.departureTime?'active':''}}">
+      <view class="clock-item-title text-darkblack flex_start">
+        <view class="padding-r-30">发车信息</view>
+        <view class="padding-r-30">{{receipt.departureTime}}</view>
+        <picker mode="time" value="{{receipt.departureTime}}" data-type="departureTime" bindchange="bindPickChange">
+          <i class="iconfont icon-xiugai text-blue"></i>
+        </picker>
+      </view>
+      <view class="clock-item-con">
+        <view class="text-darkgray flex_start">
+          <view>
+            <i class="iconfont icon-dingwei text-gray"></i>{{detailInfo.departureAddress || '暂无位置信息'}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="clock-item {{detailInfo.arrivalTime?'active':''}}">
+      <view class="clock-item-title text-darkblack flex_start">
+        <view class="padding-r-30">到达信息</view>
+        <view class="padding-r-30">{{receipt.arrivalTime}}</view>
+        <picker mode="time" value="{{receipt.arrivalTime}}" data-type="arrivalTime" bindchange="bindPickChange">
+          <i class="iconfont icon-xiugai text-blue"></i>
+        </picker>
+      </view>
+      <view class="clock-item-con">
+        <view class="text-darkgray flex_start">
+          <view>
+            <i class="iconfont icon-dingwei text-gray"></i>{{detailInfo.arrivalAddress || '暂无位置信息'}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="weui-panel">
+    <view class="weui-panel__hd">{{id?'编辑':'添加'}}发车记录</view>
+    <view class="weui-panel__bd">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_select">
+          <view class="weui-cell__hd weui-cell__hd_in-select-after">
+            <view class="weui-label required">日期</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="date" value="{{receipt.day}}" start="{{minday}}" end="{{today}}" data-type="day" bindchange="bindPickChange">
+              <view class="weui-select weui-select_in-select-after">{{receipt.day || '请选择日期'}}</view>
+            </picker>
+          </view>
+        </view>
+        <block wx:if="{{detailInfo == null}}">
+          <view class="weui-cell weui-cell_select">
+            <view class="weui-cell__hd weui-cell__hd_in-select-after">
+              <view class="weui-label required">发车时间</view>
+            </view>
+            <view class="weui-cell__bd">
+              <picker mode="time" value="{{receipt.departureTime}}" data-type="departureTime" bindchange="bindPickChange">
+                <view class="weui-select weui-select_in-select-after">{{receipt.departureTime || '请选择时间'}}</view>
+              </picker>
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_select">
+            <view class="weui-cell__hd weui-cell__hd_in-select-after">
+              <view class="weui-label required">到达时间</view>
+            </view>
+            <view class="weui-cell__bd">
+              <picker mode="time" value="{{receipt.arrivalTime}}" data-type="arrivalTime" bindchange="bindPickChange">
+                <view class="weui-select weui-select_in-select-after">{{receipt.arrivalTime || '请选择时间'}}</view>
+              </picker>
+            </view>
+          </view>
+        </block>
+        <view class="weui-cell weui-cell_select disabled">
+          <view class="weui-cell__hd weui-cell__hd_in-select-after">
+            <view class="weui-label required">线路</view>
+          </view>
+          <view class="weui-cell__bd">
+            <view class="weui-select weui-select_in-select-after nobefore">{{routeName}}</view>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_select" wx:if="{{showDirection}}">
+          <view class="weui-cell__hd weui-cell__hd_in-select-after">
+            <view class="weui-label required">运行方向</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker bindchange="bindDirectionChange" value="{{rindex}}" range-key="{{'name'}}" range="{{directionType[type]}}">
+              <view class="weui-select weui-select_in-select-after">{{directionType[type][rindex].name}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_select">
+          <view class="weui-cell__hd weui-cell__hd_in-select-after">
+            <view class="weui-label required">驾驶员</view>
+          </view>
+          <view class="weui-cell__bd">
+            <view class="weui-select weui-select_in-select-after" data-id='{{receipt.driverId}}' data-key="driver" bindtap="selSearch">{{driverName}}</view>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_select">
+          <view class="weui-cell__hd weui-cell__hd_in-select-after">
+            <view class="weui-label">乘务员</view>
+          </view>
+          <view class="weui-cell__bd">
+            <view class="weui-select weui-select_in-select-after" data-id='{{receipt.attendantId}}' data-key="attendant" data-empty="1" bindtap="selSearch">{{attendantName}}</view>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_select">
+          <view class="weui-cell__hd weui-cell__hd_in-select-after">
+            <view class="weui-label required">车牌号</view>
+          </view>
+          <view class="weui-cell__bd">
+            <view class="weui-select weui-select_in-select-after" data-id='{{receipt.vehicleId}}' data-key="vehicle" bindtap="selSearch">{{vehicleName}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="weui-btn-area">
+  <button class="gray-btn active" bindtap="submitReceipt" disabled="{{disabled}}">保存</button>
+  <button class="margin-t-30" bindtap="delReceipt" wx:if="{{detailInfo != null}}">删除</button>
+</view>

@@ -1,0 +1,10 @@
+<!--pages/codeReceipt/codeReceipt.wxml-->
+<view class="block-content-list margin-t-10 text-center fix-page" >
+  <view style="font-size:34rpx;text-align:center;padding:160rpx 0 14rpx 0;font-weight:bold;">请乘客扫码支付车费</view>
+  <view class="lightgray-color">巴滴出行 扫码支付</view>
+  <view style="position:relative;margin:60rpx 0 30rpx 0;">
+    <image style="width:60%;height:436rpx;" mode="widthFix" src="/image/common/temp-code.png"></image>
+    <view style="position:absolute;top:50%;left:0;text-align:center;width:100%;margin-top:-20rpx;color:#CDCDCD;font-size:32rpx;">开发中，敬请期待！</view>
+  </view>
+  <view style="color:#999;font-size:32rpx;"><i class="iconfont icon-refresh" style="font-size:32rpx;padding-right:24rpx;"></i>收款码自动刷新</view>
+</view>

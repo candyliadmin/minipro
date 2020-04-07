@@ -1,0 +1,14 @@
+.overview-item{
+  width: 100%;
+  font-size: 30rpx;
+  padding: 0 0 0 20rpx;
+}
+.overview-item .money-span::before{
+  content: '￥';
+  margin-left: -32rpx;
+  font-weight: 400;
+  font-size: 38rpx;
+}
+.btn-border{
+  background-color: transparent;
+}

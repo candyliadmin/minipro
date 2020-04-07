@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "历史申请修改",
+  "usingComponents": {
+    "component_emptydata": "../../../../components/emptyData/emptyData"
+  }
+}

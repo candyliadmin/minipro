@@ -1,0 +1,16 @@
+/* pages/vehicle/vehicle/detail/detail.wxss */
+.weui-toptips {
+  top: 42px;
+  left: 0;
+  right: 0;
+}
+button.gray-btn{
+  background-color: #ddd;
+  color: #fff;
+}
+button.gray-btn.active{
+  background-color: #3B78D6;
+}
+button.gray-btn.disabled{
+  background-color:rgba(59, 120, 214, 0.42);
+}

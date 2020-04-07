@@ -1,0 +1,27 @@
+<!--pages/search/search.wxml-->
+<scroll-view class="search-container" style="height: 100%;">
+  <view class="search-header">
+    <view class="input-box">
+      <icon class="icon" type='search' size="32rpx"></icon>
+      <input name="input" class="keywrod" focus="true" value="{{keyword}}" confirm-type="search" bindinput="inputChange" bindfocus="inputFocus" bindconfirm="onKeywordConfirm" confirm-type="search" placeholder="请输入关键字" />
+      <icon class='del' bindtap='clearKeyword' type='clear' wx:if="{{keyword}}" size="28rpx"></icon>
+    </view>
+    <view class="right" bindtap="closeSearch">取消</view>
+  </view>
+  <view class="search-list">
+    <view class="search-item" wx:key="{{-1}}" data-index="{{-1}}" bindtap="selItem" wx-if="{{emptyItem}}">
+      <view>无</view>
+    </view>
+    <view class="search-item flex_start" 
+    wx:for="{{resultList}}" 
+    wx:key="index"  
+    data-index="{{index}}" 
+    bindtap="selItem">
+      <image class="bdicon" mode="widthFix" src="{{options.icon}}" style="height:36rpx;"></image>
+      <view>{{item[options.namekey]}}</view>
+    </view>
+  </view>
+  <view class="search-result-empty" wx:if="{{!resultList.length && searchStatus}}">
+    <text class="text">暂无数据</text>
+  </view>
+</scroll-view>

@@ -1,0 +1,78 @@
+<!--pages/mySchedule/payReporting/payReporting.wxml-->
+<view class="padding-page">
+  <wxs module="m1">
+    var numberToFixed = function(n) {
+      n = n && (n+'').indexOf('.')!=-1?n.toFixed(2):n;
+      return n;
+    }
+    module.exports.toFixed = numberToFixed;
+  </wxs>
+  <view class="margin-t-10">
+    <view class="line-item border-radius">
+      <view class="flex__space-between">
+        <view class="line-item-title">
+        发车时间 {{receipt.departureTime}}
+        </view>
+        <view class="line-item-title">
+        {{receipt.licensePlate}}
+        </view>
+      </view>
+      <view class="flex__space-between">
+        <view class="line-row spantext gray-color">线路：{{receipt.routeName}}</view>
+        <view class="line-row spantext gray-color">驾驶员：{{receipt.driverName || '-'}}</view>
+      </view>
+      <view class="flex__space-between">
+        <view class="line-row spantext gray-color">方向：{{directionType[receipt.routeDirectionId]}}</view>
+        <view class="line-row spantext gray-color">{{receipt.day}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="ticket-price-list margin-t-10" style="position:relative;z-index:1;">
+    <view class="ticket-price-item border-radius margin-b-10" wx:for="{{priceList}}" wx:key="index">
+      <view class="flex__space-between ticket-price-top">
+        <view class="darkred-color big-text" style="{{item.fares==0?'font-size:40rpx;':''}}">{{item.fares?'¥'+m1.toFixed(item.fares):'免票'}}</view>
+        <view class="text-center">
+          <view class="orange-color">共计:
+            <text class="font-18">{{item.cashIncome}}</text>元</view>
+          <view>{{item.adultNum-(-item.childNum)}}人</view>
+        </view>
+      </view>
+      <view class="flex__space-between ticket-price-content">
+        <view class="price-input-item">
+          <view class="label">{{item.fares?'成人':'人数'}}</view>
+          <view class="add-reduce-item padding-l-10">
+            <view class="option-btn" bindtap="reduceHandle" data-index="{{index}}" data-type="adultNum">
+              <i class="iconfont icon-reduce"></i>
+            </view>
+            <input class="weui-input" bindinput="numHandle" data-index="{{index}}" data-type="adultNum" type="number" value="{{item.adultNum}}" />
+            <view class="option-btn" bindtap="addHandle" data-index="{{index}}" data-type="adultNum">
+              <i class="iconfont icon-add"></i>
+            </view>
+          </view>
+        </view>
+        <view class="dashed-line" hidden="{{item.fares==0}}"></view>
+        <view class="price-input-item" hidden="{{item.fares==0}}">
+          <view class="label">小孩</view>
+          <view class="add-reduce-item margin-l-10">
+            <view class="option-btn" bindtap="reduceHandle" data-index="{{index}}" data-type="childNum">
+              <i class="iconfont icon-reduce"></i>
+            </view>
+            <input class="weui-input" bindinput="numHandle" data-index="{{index}}" data-type="childNum" type="number" value="{{item.childNum}}" />
+            <view class="option-btn" bindtap="addHandle" data-index="{{index}}" data-type="childNum">
+              <i class="iconfont icon-add"></i>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="submit-bottom flex__space-between">
+    <view class="buttom-title">合计：<text class="orange-color">￥{{total}}</text></view>
+    <view class="weui-btn submit-btn" bindtap="submitHandle">上报</view>
+  </view>
+  <component_modal show="{{showModal}}" bind:cancel="cancel" bind:confirm="confirm">
+    <view slot="body">
+      <view class="text-center">现金收款共<text class="red-color">￥{{total}}元</text>，上报后无法再修改，是否确认上报？</view>
+    </view>
+  </component_modal>
+</view>

@@ -1,0 +1,7 @@
+page{
+  background-color: #fff;
+}
+.icon-badiyun_logo1{
+  font-size: 140rpx;
+  color: #3B78D6;
+}

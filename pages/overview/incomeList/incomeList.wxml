@@ -1,0 +1,40 @@
+<!--pages/overview/incomeList/incomeList.wxml-->
+<view>
+  <wxs module="m1">
+    var numberToFixed = function(n) {
+      n = n ? n.toFixed(2) : 0;
+      return n;
+    }
+    module.exports.toFixed = numberToFixed;
+  </wxs>
+  <view class="page margin-h-10 border-radius">
+    <view class="block-title">{{overViewType[type] || ''}}</view>
+    <view wx:for="{{incomeList}}" wx:key="index" class="income-item">
+      <navigator url="../vehicleIncome/vehicleIncome?type={{type}}&&agencyId={{agencyId}}&&routeId={{item.routeId}}">
+        <view class="flex__space-between">
+          <view>
+            <view class="margin-b-15">
+              线路名称：{{item.routeName || ''}}
+            </view>
+            <view>
+              <text class="spantext lightgray-color">当前收入</text>
+            </view>
+          </view>
+          <view>
+            <view class="block-title orange-color">￥{{(m1.toFixed(item.grandTotalOffline - (-item.grandTotalOnline))) || 0.00}}</view>
+            <view class="spantext text-center">
+              <text class="gray-color">(含</text>
+              <text class="orange-color">{{m1.toFixed(item.grandTotalOffline) || 0.00}}元</text>
+              <text class="gray-color">现金)</text>
+              <i class="iconfont icon-right"></i>
+            </view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+    <view class="spantext text-center" style="padding:20rpx 0 60rpx 0">
+      <text class="blue-color">备注：数据截止</text>
+      <text class="red-color">{{type == 0?today:yesterday}}</text>
+    </view>
+  </view>
+</view>

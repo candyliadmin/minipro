@@ -1,0 +1,5 @@
+<view class="receipts-tab">
+  <navigator url="{{item.url}}" open-type="redirect" class="receipts-tab-item {{index == activeIndex?'active':''}}" wx:for="{{tabcon}}" wx:key="index" hover-class="receipts-tab-item-hover">{{item.name}}
+    <view wx:if='{{item.msgKey && newMsg[item.msgKey]>0}}' class="weui-badge weui-badge_dot" style="position: absolute;top: 0;right:0;"></view>
+  </navigator>
+</view>

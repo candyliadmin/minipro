@@ -1,0 +1,31 @@
+<!--pages/user/feedback/feedback.wxml-->
+<view>
+    <view class="block-content-list margin-t-10">
+        <view class="weui-cells__title margin-b-10" style="margin-top:0;">问题列表</view>
+        <view class="weui-cells weui-cells_checkbox weui-cells_after-title">
+            <checkbox-group bindchange="checkboxChange">
+                <label class="weui-cell weui-check__label" wx:for="{{checkboxItems}}" wx:key="value">
+                    <checkbox class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
+                    <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                        <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+                        <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+                    </view>
+                    <view class="weui-cell__bd">{{item.name}}</view>
+                </label>
+            </checkbox-group>
+        </view>
+        <view class="weui-cells__title margin-b-10">问题描述</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <textarea bindinput="textareaChange" maxlength="200" class="weui-textarea" placeholder="请描述意见的详细内容，字数越多越有利于帮助我们改进。" style="height: 3.3em" />
+                    <view class="weui-textarea-counter">{{textLen}}/200</view>
+                </view>
+            </view>
+        </view>
+        <view class="weui-btn-area">
+            <button class="bay-btn lg block bg-blue" bindtap="formSubmit">提交</button>
+        </view>
+    </view>
+</view>
+

@@ -1,0 +1,61 @@
+<!--pages/mySchedule/mySchedule.wxml-->
+<view class="">
+  <view class="block-title schedule-title flex__space-between">
+    <view class="date-opt-btn" bindtap="setDate" data-day="-1">上月</view>
+    <view class="select-wrap">
+      <view class="select-box select-no-border">
+        <picker bindchange="bindPickerChange" mode="date" fields="month" value="{{date}}" end="{{today}}">
+          <view class="picker select-picker">{{dateArr[0]}}年{{dateArr[1]}}月</view>
+        </picker>
+      </view>
+    </view>
+    <view class="date-opt-btn {{today<=date?'disabled':''}}" bindtap="setDate" data-day="1">下月</view>
+  </view>
+  <view class="flex_start flex__center" style="font-size:22rpx;margin-top:20rpx;">
+    <view>截至{{dateArr[0]}}年{{dateArr[1]}}月{{dateArr[2]}}日</view>
+    <view bindtap="gotoList" class="blue-color padding-l-10">查看详情</view>
+  </view>
+  <view class="statistic-num">
+    <view class="flex_start flex__center">
+      <view class="statistic-item bordered">
+        <view class="statistic-type">{{data.runTimes}}</view>
+        <view>运营单次</view>
+      </view>
+      <view class="statistic-item">
+        <view class="statistic-type">{{data.runDays}}</view>
+        <view>运营天数</view>
+      </view>
+    </view>
+  </view>
+  <scroll-view scroll-y style="height:calc(100vh - {{type==1?'406':'510'}}rpx);background-color:#fff;">
+    <view class="statistic-con">
+      <view class="route-statistic">
+        <view class="line-item  border-bottom" wx:for="{{data.routeReceipts}}" wx:key="index">
+          <view class="line-item-wrap">
+            <view class="line-item-title flex__space-between" style="margin-bottom:8rpx;">
+              <text class="bold">{{item.routeName}}</text>
+              <text class="spantext">职务：{{positionType[item.position] || '-'}}</text>
+            </view>
+            <view class="line-row spantext lightgray-color">
+              运营单次：{{item.runTimes || 0}}（全程{{item.runTimes || 0}}，短线0）
+            </view>
+            <view class="line-row spantext lightgray-color">
+              <text>车次系数：~</text>
+              <text>运营里程：~</text>
+            </view>
+          </view>
+        </view>
+        <view wx:if="{{data.routeReceipts.length==0}}">
+          <component_emptydata bordered="{{false}}" small="{{true}}" />
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+<navigator url="/pages/codeDeparture/codeDeparture/codeDeparture" class="fix-code" hover-class="fix-code-active">
+  <image src="/image/common/fix-code.png" mode="widthFix"></image>
+</navigator>
+<block wx:if="{{type!=1}}">
+  <import src="../bar.wxml" />
+  <template is="sheduleBar" data="{{tabBar}}" />
+</block>

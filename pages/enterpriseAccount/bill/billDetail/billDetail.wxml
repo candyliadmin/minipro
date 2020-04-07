@@ -1,0 +1,90 @@
+<!-- pages/enterpriseAccount/bill/billDetail/billDetail.wxml -->
+<view class="block-content-list margin-t-10 fix-page">
+  <wxs module="m1">
+    var numberToFixed = function(n) {
+      n = n ? n.toFixed(2) : 0.00;
+      return n;
+    }
+    var absoluteValue = function(n) {
+      n = n ? n : 0.00;
+      return Math.abs(n).toFixed(2);
+    }
+    module.exports.toFixed = numberToFixed;
+    module.exports.toAbsolute = absoluteValue;
+  </wxs>
+  <view class="text-center onedetail-top">
+    <image class="titleicon margin-t-10 " mode="widthFix" src="{{imgUrl}}{{type[detailInfo.type]['icon'] || '/page/account/queshi_logo.png'}}"></image>
+    <view class="lightgray-color" wx:if="{{detailInfo.type=='WITHDRAW'}}">
+      {{type[detailInfo.type]['name'] }}-到{{type[detailInfo.type]['type'] && type[detailInfo.type]['type']}}
+    </view>
+    <view class="lightgray-color" wx:else>{{type[detailInfo.type]['name'] }}</view>
+    <view class="{{detailInfo.type}} onedetail-title">
+      {{detailInfo.amount>0?'+':''}}{{m1.toFixed(detailInfo.amount)}}
+    </view>
+  </view>
+  <view class="padding-page">
+    <view class="weui-form-preview">
+      <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item" wx:if="{{detailInfo.type!='WITHDRAW'}}">
+          <view class="weui-form-title weui-form-preview__label bold" wx:if="{{detailInfo.type!='fareClearing'}}">
+            提现详情
+          </view>
+          <view class="weui-form-title weui-form-preview__label bold" wx:else>结算详情</view>
+        </view>
+        <view class="weui-form-preview__item {{detailInfo.type=='WITHDRAW'?'bordered-b':''}}">
+          <view class="weui-form-preview__label">当前状态</view>
+          <view wx:if="{{detailInfo.type=='WITHDRAW'}}">
+            <view class="process-success">
+              <view class="process-step">
+                <view class="process-1"></view>
+                <view class="process-title color-gray">发起提现申请</view>
+              </view>
+              <view class="process-border-1"></view>
+              <view class="process-step">
+                <icon type="waiting" size="20"></icon>
+                <view class="process-title">
+                  <view>处理中</view>
+                  <view class="color-gray">预计{{detailInfo.predictFinishedTime}}前到账</view>
+                </view>
+              </view>
+              <view class="process-border-3 {{detailInfo.status?'active':''}}"></view>
+              <view class="process-step">
+                <view class="process-3 {{detailInfo.status?'active':''}}"></view>
+                <view class="process-title {{detailInfo.status=='WITHDRAW_FAILED'?'red-color':''}}">{{statusType[detailInfo.status] || '到账成功'}}</view>
+              </view>
+            </view>
+          </view>
+          <view wx:elif="{{detailInfo.type=='WITHDRAW_FAIL'}}" class="weui-form-preview__value">已驳回至账户</view>
+          <view wx:else class="weui-form-preview__value">{{detailInfo.status || '--'}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label" wx:if="{{detailInfo.type!='fareClearing'}}">
+            提现单号
+          </view>
+          <view class="weui-form-preview__label" wx:else>交易单号</view>
+          <view class="weui-form-preview__value">{{detailInfo.transactionNum}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">金额</view>
+          <view class="weui-form-preview__value">￥{{m1.toAbsolute(detailInfo.amount)}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">创建时间</view>
+          <view class="weui-form-preview__value">{{detailInfo.createdTime}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">结束时间</view>
+          <view class="weui-form-preview__value">{{detailInfo.finishedTime || '--'}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">操作人</view>
+          <view class="weui-form-preview__value">{{detailInfo.operator}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">备注</view>
+          <view class="weui-form-preview__value">{{detailInfo.note||'--'}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

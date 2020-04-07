@@ -1,0 +1,7 @@
+/* pages/vehicle/vehicleMonitor/vehicleMonitor.wxss */
+page{
+  background-color: #fff;
+}
+.block-content-list{
+  padding: 15rpx;
+}

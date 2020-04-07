@@ -1,0 +1,101 @@
+/* pages/dataDetails/dataDetails.wxss */
+.datadetail-item{
+  font-size: 28rpx;
+  border-bottom:1px solid #ddd; 
+  padding: 24rpx 0;
+  min-height: 90rpx;
+}
+.datadetail-item .bdicon{
+  width: 34rpx;
+  height: 27rpx;
+  padding-right: 7rpx;
+}
+.datadetail-item.detailbill-item{
+  min-height: 40rpx;
+}
+.datadetail-list .datadetail-item:last-of-type{
+  border-bottom: none;
+}
+.receipts-tab{
+  background-color: #fff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  justify-items: center;
+  font-size: 36rpx;
+  line-height: 2;
+  border-bottom: 10rpx solid #F2F2F2;
+  padding-bottom: 22rpx;
+  padding-top: 27rpx;
+}
+.receipts-tab-item{
+  padding: 0 34rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  padding-bottom: 8rpx;
+  border-bottom: 4rpx solid #fff;
+  border-bottom-left-radius: 4rpx;
+  border-bottom-right-radius: 4rpx;
+  position: relative;
+}
+.weui-badge {
+  background-color: #D81E06;
+}
+.receipts-tab-item.active{
+  border-color: #51B900;
+}
+.passenger-con{
+  padding: 0 23rpx;
+  background-color: #fff;
+  box-sizing: border-box;
+  position: relative;
+  /* height: calc(100vh - 125rpx); */
+}
+.date-input{
+  padding: 10rpx 0;
+  justify-content: flex-start;
+  font-size: 34rpx;
+}
+.date-picker{
+  background-color: #F2F2F2;
+  border-radius: 8rpx;
+  text-align: center;
+  color: #666666;
+  width: calc(50% - 110rpx);
+  padding: 6rpx 0;
+  position: relative;
+  font-size: 28rpx;
+}
+.date-picker.start-date{
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.date-picker.end-date{
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding-right: 34rpx;
+}
+.date-picker image{
+  position: absolute;
+  right: 10rpx;
+  top:7rpx;
+  width: 34rpx;
+  height: 31rpx;
+}
+.reset-btn{
+  font-size: 28rpx;
+  padding: 6rpx 10rpx;
+}
+.date-item{
+  padding: 8rpx 24rpx;
+  font-size: 24rpx;
+  background-color: #F7F7FA;
+  border: 1px solid #979797;
+  display: inline-block;
+  border-radius: 32rpx;
+  margin: 14rpx 0;
+}
+.weui-cell__ft_in-access:after{
+  right: 4rpx;
+}

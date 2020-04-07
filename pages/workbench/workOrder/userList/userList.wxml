@@ -1,0 +1,31 @@
+<view>
+  <view class="bdy-block-title flex__space-between">
+    <view class="select-wrap">
+      <view class="select-box select-no-border">
+        <picker bindchange="bindPickerChange" fields="{{pickType}}" mode="date" value="{{date}}" end="{{today}}">
+          <view class="picker select-picker">{{dateArr[0]}}年{{dateArr[1]}}月<block wx:if="{{type==='day'}}">{{dateArr[2]}}日</block>
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view wx-if="{{type==='month'}}">截至{{todayArr[0]}}年{{todayArr[1]}}月{{todayArr[2]}}日</view>
+  </view>
+  <scroll-view scroll-y class="bdy-cells" bindscrolltolower="getMOreList">
+    <navigator url="{{type=='month'?'../monthList/monthList?date='+date:'../dayList/dayList?date='+date+'&uid='+item.personId}}" class="bdy-cell" wx:for="{{userList}}" wx:key="personId">
+      <view class="text-lg">{{item.name}}</view>
+      <view class="flex__space-between weui-cell__ft_in-access">
+        <view class="text-gray">
+          <block wx:for="{{item.position}}" wx:key="{{index}}" wx:for-item="role" wx:if="{{role=='DRIVER' || role == 'ATTENDANT'}}">
+            {{roles[role]}}
+          </block>
+        </view>
+        <view>运营单次 {{item.times}}
+          <block wx:if="{{type=='month'}}"> 运营天数 {{item.days}}</block>
+        </view>
+      </view>
+    </navigator>
+    <view wx:if="{{userList.length==0}}">
+      <component_emptydata bordered="{{false}}" small="{{true}}" />
+    </view>
+  </scroll-view>
+</view>

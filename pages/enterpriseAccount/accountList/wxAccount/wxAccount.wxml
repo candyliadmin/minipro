@@ -1,0 +1,15 @@
+<view class="gray-page border-top-10">
+  <view class="block-content-list text-center">
+    <block wx:if="{{detailInfo && detailInfo.realName}}">
+      <image src="{{detailInfo.headImgUrl}}" class="account-img"></image>
+      <view class="account-name">{{detailInfo.realName}}</view>
+      <view class="lightgray-color">微信昵称：{{detailInfo.nickName}}</view>
+      <view class="lightgray-color spantext margin-t-20">注：解绑、重新绑定操作请前往PC端进行操作</view>
+    </block>
+    <block wx:else>
+      <image src="{{imgUrl}}/page/account/wx-empty.png" class="account-empty"></image>
+      <view class="gray-color">尚未绑定微信号</view>
+      <view class="gray-color">请前往pc端进行绑定操作</view>
+    </block>
+  </view>
+</view>

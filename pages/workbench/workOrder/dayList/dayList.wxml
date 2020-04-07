@@ -1,0 +1,55 @@
+<!--pages/mySchedule/mySchedule.wxml-->
+<view class="">
+  <view class="block-title schedule-title flex__space-between border-top-10" wx:if="{{!isOneDay}}">
+    <view class="date-opt-btn" bindtap="setDate" data-day="-1">前一天</view>
+    <view class="select-wrap">
+      <view class="select-box select-no-border">
+        <picker bindchange="bindPickerChange" mode="date" value="{{date}}" end="{{today}}">
+          <view class="picker select-picker">{{dateArr[0]}}年{{dateArr[1]}}月{{dateArr[2]}}日</view>
+        </picker>
+      </view>
+    </view>
+    <view class="date-opt-btn {{date>=today?'disabled':''}}" bindtap="setDate" data-day="1">后一天</view>
+  </view>
+  <view class="gray-page border-top-10">
+    <scroll-view scroll-y bindscrolltolower="getMoreList" style="height:calc(100vh - {{isOneDay?'10':'190'}}rpx);background-color:#fff;" wx-if="{{scheduleList.length > 0}}">
+      <view style="padding:26rpx;">
+        <view wx:for="{{scheduleList}}" wx:key="index" class="line-item border-bottom">
+          <view class="line-item-wrap">
+            <view class="flex__space-between" style="margin-bottom:8rpx;">
+              <view class="line-item-title flex_start">
+                <text class="bold">发车时间{{item.departureTime || '-'}}</text>
+                <text class="spantext vehicle-num">班次：{{item.trip || '-'}}</text>
+              </view>
+              <view class="spantext">{{item.licensePlate || '-'}}</view>
+            </view>
+            <view class="flex__space-between" style="align-items:flex-start">
+              <view>
+                <view class="line-row spantext lightgray-color">线路：{{item.routeName || '-'}}</view>
+                <view class="line-row spantext lightgray-color">司乘：
+                  <text style="padding-right: 20rpx;">{{item.driverName || '-'}}、{{item.attendantName || '-'}}</text>
+                </view>
+              </view>
+              <view class="flex__center-right">
+                <text class="spantext lightgray-color">{{directionType[item.routeDirectionId]}}</text>
+              </view>
+            </view>
+            <view class="flex__row-center-right red-color"  wx:if="{{item.departureStatus==='ABNORMAL_DEPARTURE'}}">
+                <i class="iconfont icon-tixing margin-l-10"></i>发车时间异常
+            </view>
+          </view>
+        </view>
+        <component_loadmore loading="{{loading}}" hasmore="{{pageNo<=totalPages && scheduleList.length>0}}" wx:if="{{totalPages>1}}" />
+      </view>
+    </scroll-view>
+  </view>
+  <view class="weui-msg" wx-if="{{scheduleList.length == 0}}">
+    <view class="weui-msg__icon-area">
+      <image class="empty-img" style="padding-top:220rpx;width:294rpx;height:115rpx;" mode="widthFix" src="{{imgUrl}}/common/small-empty-data.png"></image>
+    </view>
+    <view class="weui-msg__text-area gray-color">
+      <view>未获取到您的排班信息</view>
+      <view>请联系调度人员</view>
+    </view>
+  </view>
+</view>

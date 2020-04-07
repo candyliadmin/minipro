@@ -1,0 +1,10 @@
+<!--pages/guidePage/guidePage.wxml-->
+<view class="">
+  <image src="{{imgUrl}}/common/guide-bg.png?111" mode="widthFix" style="width:100%;"></image>
+  <view class="guide-btn">
+    <image src="{{imgUrl}}/common/guide-btn.png" mode="widthFix" style="width:100%;"></image>
+    <button class="guide-btn-txt" bindtap="login">登上巴滴云</button>
+    <!-- <button class="guide-btn-txt" data-login="true" open-type="getUserInfo" bindgetuserinfo="getUserInfo">登上巴滴云</button> -->
+    <view class="company-info">深圳市巴滴科技有限公司</view>
+  </view>
+</view>

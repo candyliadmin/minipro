@@ -1,0 +1,67 @@
+/* pages/vehiclePosition/vehicleDetail/vehicleDetail.wxss */
+.path-item-circle{
+  width: 50rpx;
+  display: inline-block;
+  text-align: center;
+}
+.path-item-line{
+  box-sizing: border-box; 
+  background-color: green;
+  display: inline-block; 
+  height: 96rpx;
+  width: 8rpx;
+  margin-left: 20rpx;
+  vertical-align: middle;
+}
+.path-item-name{
+  display: inline-block;
+  padding-left: 20rpx;
+  vertical-align: middle;
+}
+.scroll-view {
+  width: 100%;
+  position: relative;
+}
+.scroll-view-box {
+  margin: 16rpx;
+  margin-bottom: 16rpx;
+}
+
+.siteInfo-circle {
+  display: inline-block;
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 32rpx;
+  font-size: 24rpx;
+  vertical-align: middle;
+}
+
+.siteInfo-circle-green {
+  border: 3px solid #1aad19;
+}
+
+.siteInfo-circle-red {
+  border: 3px solid #ff0000;
+  background-color: #e4e4e4;
+}
+.current-pos{
+  width: 100%;
+  position: absolute;
+  top: 68rpx;
+  left: 0;
+  text-align: left;
+}
+.current-vehicle{
+  font-size: 12px;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+}
+.current-vehicle image{
+  width: 42rpx;
+  height: 42rpx;
+  vertical-align: middle;
+  display: inline-block;
+}

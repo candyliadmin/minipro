@@ -1,0 +1,118 @@
+<view class="gray-page  border-top-10">
+  <view class="block-content-list">
+    <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{tips}}</view>
+    <view class="cash-header border-bottom">
+      <view class="flex__space-around">
+        <view class="cash-step text-center active">
+          <view class="step-number">1</view>
+          <view>账户信息</view>
+        </view>
+        <view class="cash-step text-center">
+          <view class="step-number">2</view>
+          <view>身份验证</view>
+        </view>
+        <view class="cash-step text-center">
+          <view class="step-number">3</view>
+          <view>操作成功</view>
+        </view>
+      </view>
+    </view>
+      <view class="cash-body">
+        <view class="weui-cell disabled">
+          <view class="weui-cell__hd">
+            <view class="weui-label">账户类型</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker disabled range-key="{{'name'}}" range="{{accountType}}" value="{{accountTypeIndex}}" bindchange="bindAccountTypeChange">
+              <view>{{accountType[accountTypeIndex].name}}</view>
+            </picker>
+          </view>
+        </view>
+        <block wx:if="{{accountTypeIndex == 1}}">
+          <view class="weui-cell disabled">
+            <view class="weui-cell__hd">
+              <view class="weui-label">企业名称</view>
+            </view>
+            <view class="weui-cell__bd">{{info.name}}</view>
+          </view>
+          <view class="weui-cell disabled">
+            <view class="weui-cell__hd">
+              <view class="weui-label">营业执照编号</view>
+            </view>
+            <view class="weui-cell__bd">{{info.businessLicenseNo}}</view>
+          </view>
+          <view class="weui-cell disabled">
+            <view class="weui-cell__hd">
+              <view class="weui-label">法人姓名</view>
+            </view>
+            <view class="weui-cell__bd">{{info.username}}</view>
+          </view>
+          <view class="weui-cell disabled">
+            <view class="weui-cell__hd">
+              <view class="weui-label">法人手机号</view>
+            </view>
+            <view class="weui-cell__bd">{{info.contactPhone}}</view>
+          </view>
+          <view class="weui-cell disabled">
+            <view class="weui-cell__hd">
+              <view class="weui-label">法人身份证号码</view>
+            </view>
+            <view class="weui-cell__bd">{{info.contactCertNo}}</view>
+          </view>
+        </block>
+        <block wx:if="{{accountTypeIndex == 0}}">
+          <view class="weui-cell disabled">
+            <view class="weui-cell__hd">
+              <view class="weui-label">开户人姓名</view>
+            </view>
+            <view class="weui-cell__bd">{{info.username}}</view>
+          </view>
+        </block>
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <view class="weui-label required">预留手机号码</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name="mobile" class="code-input border-radius" type="text" placeholder="请输入银行卡预留手机号码" data-key="mobile" bindinput="inputChange" value="{{info.mobile}}"></input>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_select">
+          <view class="weui-cell__hd weui-cell__hd_in-select-after">
+            <view class="weui-label required">开户银行</view>
+          </view>
+          <view class="weui-cell__bd">
+            <view name="openBankCode" class="weui-select weui-select_in-select-after" data-id='{{info.openBankCode}}' data-key="bank" bindtap="selSearch">{{openBank}}</view>
+          </view>
+        </view>
+        <block wx:if="{{accountTypeIndex == 1}}">
+          <view class="weui-cell weui-cell_select">
+            <view class="weui-cell__hd weui-cell__hd_in-select-after">
+              <view class="weui-label">开户银行网点</view>
+            </view>
+            <view class="weui-cell__bd">
+              <view class="weui-select weui-select_in-select-after" data-id='{{info.subBankCode}}' data-key="subBank" bindtap="selSearch">{{subBank}}</view>
+            </view>
+          </view>
+        </block>
+        <view class="weui-cell weui-cell_select">
+          <view class="weui-cell__hd weui-cell__hd_in-select-after">
+            <view class="weui-label required">银行卡类型</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker range="{{cardType}}">
+              <view class="weui-select weui-select_in-select-after">{{cardType[info.cardType]}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <view class="weui-label required">银行卡号</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name="accountName" class="code-input border-radius" type="text" placeholder="请输入银行卡号" data-key="accountName" bindinput="inputChange" value="{{info.accountName}}"></input>
+          </view>
+        </view>
+      </view>
+      <view style="margin:140rpx 40rpx 0 40rpx;" bindtap="gotoVerify" class="btn border-radius {{info.mobile && info.accountName ?'step-btn-ok':'step-btn'}}">下一步</view>
+  </view>
+</view>

@@ -1,0 +1,121 @@
+/* pages/enterpriseAccount/cashWithdrawal/cashWithdrawal.wxss */
+page{
+  background-color: #fff;
+}
+.cash-header{
+  padding: 34rpx 0 60rpx 0;
+}
+.cash-step{
+  color: #999;
+  font-weight: bold;
+  position: relative;
+}
+.cash-step::after{
+  content: '';
+  position: absolute;
+  width: 120%;
+  height: 1px;
+  background-color: #51B900;
+  top: 21rpx;
+  left: 100%;
+  margin-left: -10%;
+}
+.cash-header .cash-step:last-of-type::after{
+  height: 0;
+}
+.step-number{
+  width: 42rpx;
+  height: 42rpx;
+  margin: 0 auto;
+  font-size: 36rpx;
+  border-radius: 50%;
+  line-height: 42rpx;
+  color: #999999;
+  background-color: #fff;
+  border: 1rpx solid #979797;
+  font-weight: normal;
+}
+.cash-step.active{
+  color: #333;
+}
+.cash-step.active .step-number{
+  color: #51B900;
+  background-color: rgba(81, 185, 0, 0.2);
+  border: 1rpx solid #00BF00;
+}
+.cash-body{
+  padding-top: 80rpx;
+}
+.cash-number{
+  font-size:76rpx;
+  padding: 24rpx 0 10rpx 0;
+  line-height: 1;
+}
+.cash-number input{
+  height: 80rpx;
+  color: #333;
+}
+.cash-number-label{
+  padding: 0 28rpx;
+}
+.input-placeholder{
+  color: #ddd;
+}
+.weui-demo-dialog{
+  visibility:hidden;
+  opacity:0;
+  transition:all .3s;
+}
+.weui-half-screen-dialog{
+  transition:all .3s;
+  transform:translateY(100%);
+}
+.weui-demo-dialog_show{
+  visibility:visible;
+  opacity:1;
+}
+.weui-demo-dialog_show .weui-half-screen-dialog{
+    transform:translateY(0);
+}
+.process-success {
+  border-top: 1rpx solid #ddd;
+  padding: 40rpx 80rpx;
+  /* display: flex;
+  flex-direction: column; */
+}
+
+.process-step {
+  display: flex;
+  align-items: center;
+}
+
+.process-1 {
+  width: 24rpx;
+  height: 24rpx;
+  margin: 0 7rpx;
+  border-radius: 12rpx;
+  background: rgba(81, 185, 0, 1);
+}
+
+.process-border-1 {
+  border-left: 5rpx dotted #51B900;
+  height: 50rpx;
+  margin-left: 16rpx;
+}
+
+.process-3 {
+  width: 24rpx;
+  height: 24rpx;
+  margin: 0 7rpx;
+  border-radius: 12rpx;
+  background: rgba(221, 221, 221, 1);
+}
+
+.process-border-3 {
+  border-left: 5rpx dotted #DDDDDD;
+  height: 50rpx;
+  margin-left: 16rpx;
+}
+.cash-info{
+  margin-top: 14rpx;
+}

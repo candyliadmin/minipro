@@ -1,0 +1,11 @@
+.block-content-list{
+  text-align: center;
+}
+.empty-img{
+  width: 403rpx;
+  height: 416rpx;
+  padding-bottom: 48rpx;
+}
+.border-gray-top{
+  border-top: 10rpx solid #f2f2f2;
+}

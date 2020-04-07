@@ -1,0 +1,38 @@
+<view>
+  <block wx:if="{{isOne}}">
+    <view class="bdy-block-title flex__space-between">
+      <view class="select-wrap">
+        <view class="select-box select-no-border">
+          <picker bindchange="bindPickerChange" fields="month" mode="date" value="{{date}}" end="{{today}}">
+            <view class="picker select-picker">{{dateArr[0]}}年{{dateArr[1]}}月</view>
+          </picker>
+        </view>
+      </view>
+      <view>截至{{todayArr[0]}}年{{todayArr[1]}}月{{todayArr[2]}}日</view>
+    </view>
+    <view class="statistic-num">
+      <view class="flex_start flex__center">
+        <view class="statistic-item bordered">
+          <view class="statistic-type">{{data.runTimes}}</view>
+          <view>运营单次</view>
+        </view>
+        <view class="statistic-item">
+          <view class="statistic-type">{{data.runDays}}</view>
+          <view>运营天数</view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <wxs src="../../../../utils/common.wxs" module="utils" />
+  <scroll-view scroll-y style="height:calc(100vh - {{isOne?'370':'0'}}rpx);"  bindscrolltolower="getMoreList" class="bdy-cells">
+    <navigator url="" class="bdy-cell" wx:for="{{list}}" wx:key="{{index}}">
+      <view class="text-lg">{{utils.dateToStr(item.date,'day')}}</view>
+      <view class="flex__space-between">
+        <view class="text-gray">运营单次：{{item.times}}（全程{{item.times}}，短线0）</view>
+      </view>
+    </navigator>
+    <view wx:if="{{list.length==0}}">
+      <component_emptydata bordered="{{false}}" small="{{true}}" />
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,57 @@
+<view class="gray-page  border-top-10">
+  <wxs module="m1">
+    var numberToFixed = function(n) {
+      n = n?n.toFixed(2):0.00;
+      return n;
+    }
+    var numberToFour = function(n){
+      n = n.length>3?n.slice(-4):n;
+      return n;
+    }
+    module.exports.toFixed = numberToFixed;
+    module.exports.toFour = numberToFour;
+  </wxs>
+  <view class="block-content-list">
+    <view class="cash-header border-bottom">
+      <view class="flex__space-around">
+        <view class="cash-step text-center active">
+          <view class="step-number">1</view>
+          <view>余额提现</view>
+        </view>
+        <view class="cash-step text-center">
+          <view class="step-number">2</view>
+          <view>身份验证</view>
+        </view>
+        <view class="cash-step text-center">
+          <view class="step-number">3</view>
+          <view>操作成功</view>
+        </view>
+      </view>
+    </view>
+    <view class="cash-body">
+      <view class="flex_start" style="align-items: start;">
+        <view style="padding-right:28rpx;">到账银行卡</view>
+        <view>
+          <view>
+            <image src="{{imgUrl}}/page/account/yue_zhanghu.png" style="width:24rpx;height:24rpx;"></image>
+            <text class="darkblue-color">{{accountInfo.bank.name}}（{{m1.toFour(accountInfo.bank.card)}}）</text>
+          </view>
+          <view class="lightgray-color spantext">7*24小时内到账</view>
+        </view>
+      </view>
+      <view class="spantext" style="margin-top:56rpx;">提现金额</view>
+      <view class="flex_start bold cash-number border-bottom">
+        <view class="cash-number-label">￥</view>
+        <input type="number" placeholder="0.00" class="input-placeholder" value="{{cashAmount}}" bindinput="inputChange"></input>
+      </view>
+      <view class="flex_start margin-t-10"  wx:if="{{errIndex==-1}}">
+        <view class="lightgray-color spantext">当前账户可提现余额{{m1.toFixed(availableBalance)}}元</view>
+        <view class="darkblue-color spantext" style="padding:0 20rpx;" bindtap="allCash">全部提现</view>
+      </view>
+      <view class="flex_start margin-t-10" wx:if="{{errIndex>-1}}">
+        <view class="red-color spantext">{{errMsg[errIndex]}}</view>
+      </view>
+    </view>
+    <view class="btn border-radius {{active?'btn-green':''}}" style="margin:280rpx 40rpx 0 40rpx;" bindtap="gotoVerify">下一步</view>
+  </view>
+</view>

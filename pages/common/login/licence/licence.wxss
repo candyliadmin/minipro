@@ -1,0 +1,17 @@
+/* pages/login/licence/licence.wxss */
+page{
+  background-color: #fff;
+  line-height: 1.8;
+  font-size: 24rpx;
+}
+.licence-list{
+  list-style-type: decimal;
+}
+.licence-list>view{
+  margin-bottom: 10rpx;
+}
+.licence-title{
+  text-align: center;
+  font-size: 32rpx;
+  padding: 0 0 20rpx 0;
+}

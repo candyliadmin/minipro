@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "component_emptydata": "../../../../components/emptyData/emptyData",
+    "component_bar": "../barComponent/bar",
+    "component_loadmore": "../../../../components/loadMore/loadMore"
+  },
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "收款上报"
+}

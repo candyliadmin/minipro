@@ -1,0 +1,44 @@
+.opration-top{
+  background-color: #fff;
+  padding: 27rpx 20rpx;
+  clear: both;
+  overflow: hidden;
+}
+.state-btn{
+  margin-bottom: 18rpx;
+  border-radius: 6rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.line-item-wrap .line-item-title{
+  margin-bottom: 8rpx;
+}
+.line-item-wrap .line-row{
+  margin-bottom: 4rpx;
+}
+.operation-item{
+  padding: 28rpx 0;
+}
+.operation-item .bdicon{
+  width: 34rpx;
+  height: 34rpx;
+  padding: 0 10rpx 0 0;
+}
+.operation-item .vehicle-time{
+  padding-right: 24rpx;
+  margin-right: 24rpx;
+  font-size: 32rpx;
+  border-right: 2rpx dashed #cdcdcd;
+  line-height: 44rpx;
+}
+.operation-item .vehicle-time:last-of-type{
+  border-right: none;
+}
+.receipts-bottom{
+  padding: 15rpx 0 20rpx 0;
+}
+.weui-loadmore{
+  margin: 18rpx auto;
+  color: #999999;
+  font-size: 28rpx;
+}

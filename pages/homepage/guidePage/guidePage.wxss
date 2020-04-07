@@ -1,0 +1,36 @@
+/* pages/guidePage/guidePage.wxss */
+page{
+  background:linear-gradient(to right, #1973B1 , #201E87);
+}
+.guide-btn{
+  width: 321rpx;
+  height: 121rpx;
+  position: fixed;
+  bottom: 15%;
+  left: 50%;
+  margin-left: -160rpx;
+}
+.guide-btn-txt{
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 104rpx;
+  line-height: 104rpx;
+  background-color: transparent;
+  color: #fff;
+  font-size: 36rpx;
+  border:none;
+}
+.guide-btn-txt:after{
+  border: none;
+}
+.company-info{
+  color: #6A93FB;
+  position: fixed;
+  bottom: 46rpx;
+  width: 100%;
+  text-align: center;
+  font-size: 18rpx;
+  left: 0;
+}

@@ -1,0 +1,43 @@
+<component_bar id="bar" activeIndex="{{activeIndex}}" />
+<wxs module="m1">
+  var numberToFixed = function(n) {
+    n = n ? n.toFixed(2) : 0.00;
+    return n;
+  }
+  module.exports.toFixed = numberToFixed;
+</wxs>
+
+<view class="passenger-con">
+  <scroll-view scroll-y bindscrolltolower="getMOreList" style="height:calc(100% - 0rpx);"   wx-if="{{dataList.length > 0}}">
+    <view class="line-item">
+      <view class="weui-slideview" wx:for="{{dataList}}" wx:key="value">
+        <view class="receipts-con flex__space-between">
+          <view>
+            <view class="line-item-title flex_start">
+              <view>发车时间 {{item.departureTime}}</view>
+              <image src="{{imgUrl}}/common/icon/attendant.png" style="width:28rpx;" mode="widthFix" class="receipt-img" wx:if="{{item.receiptType == 'CUSTOM'}}"></image>
+              <image src="{{imgUrl}}/common/icon/driver.png" style="width:28rpx;" mode="widthFix" class="receipt-img" wx:if="{{item.receiptType == 'WORKEFFORT'}}"></image>
+              <i class="iconfont icon-tixing red-color margin-l-10" wx:if="{{item.departureStatus==='ABNORMAL_DEPARTURE'}}"></i>
+            </view>
+            <view class="line-row spantext gray-color">{{item.routeName || ''}}</view>
+            <view class="line-row spantext gray-color">{{item.licensePlate || ''}} {{item.driverName || '-'}}</view>
+            <view class="line-row spantext gray-color">{{directionType[item.routeDirectionId]}}</view>
+          </view>
+          <view class="flex__center-right">
+            <view class="state-btn state-green-btn bordered margin-b-10" bindtap="editReceipt" data-type="{{item.receiptType}}" data-id="{{item.id}}">
+              修改
+            </view>
+            <view class="state-btn state-red-btn bordered" bindtap="cancleReceipt" data-index="{{index}}" data-id="{{item.id}}">
+              取消
+            </view>
+            <view class="line-row">合计：¥{{m1.toFixed(item.totalFares || 0)}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <component_loadmore loading="{{loading}}" hasmore="{{pageNo<=totalPages && dataList.length>0}}" />
+  </scroll-view>
+  <view wx:if="{{dataList.length==0}}">
+    <component_emptydata bordered="{{false}}" small="{{true}}" />
+  </view>
+</view>

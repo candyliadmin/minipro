@@ -1,0 +1,54 @@
+/* pages/enterpriseAccount/accountUpdate/success/success.wxss */
+@import '../accountUpdate.wxss';
+
+.cash-info {
+  margin-top: 14rpx;
+}
+
+.process-success {
+  border-top: 1rpx solid #ddd;
+  padding: 40rpx 80rpx;
+  /* display: flex;
+  flex-direction: column; */
+}
+
+.process-step {
+  display: flex;
+  align-items: center;
+}
+
+.process-1 {
+  width: 24rpx;
+  height: 24rpx;
+  margin: 0 7rpx;
+  border-radius: 12rpx;
+  background: rgba(81, 185, 0, 1);
+}
+
+.process-border-1 {
+  border-left: 5rpx dotted #51B900;
+  height: 50rpx;
+  margin-left: 16rpx;
+}
+
+.process-3 {
+  width: 24rpx;
+  height: 24rpx;
+  margin: 0 7rpx;
+  border-radius: 12rpx;
+  background: rgba(221, 221, 221, 1);
+}
+
+.process-border-3 {
+  border-left: 5rpx dotted #DDDDDD;
+  height: 50rpx;
+  margin-left: 16rpx;
+}
+
+.process-title {
+  margin-left: 20rpx;
+}
+
+.color-gray {
+  color: rgba(153, 153, 153, 1);
+}

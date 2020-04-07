@@ -1,0 +1,24 @@
+<!--pages/line/line.wxml-->
+<view>
+  <view class="search-header">
+    <!-- <view class="block-title nopad-block">线路列表</view> -->
+    <SearchBar id="SearchBar" placeholderMsg="请输入路线名称" searchstr="{{searchstr}}" bind:searchList="searchList" bind:endsearchList="endsearchList" bind:cancelsearch="cancelsearch" bind:activity_clear="activity_clear" bind:addhandle="addhandle">
+    </SearchBar>
+  </view>
+  <view class="padding-page search-content" wx:if="{{lineList.length>0}}">
+    <view wx:for="{{lineList}}" wx:key="index" class="line-item border-radius margin-b-10">
+      <view class="line-item-wrap">
+        <view class="line-item-title">
+        <image class="bdicon" mode="widthFix" src="{{imgUrl}}/common/icon/line-icon.png"></image>
+        {{item.shortName}}
+          <view class="linetype-tag fr">{{linetype[item.type] || "未设置"}}</view>
+        </view>
+        <view class="line-row spantext lightgray-color">{{item.firstStop || '起始站'}}-{{item.lastStop || '终点站'}}{{directionDes[item.directionId]?'('+directionDes[item.directionId]+')':''}}</view>
+        <!-- <view class="line-row spantext lightgray-color">06:00-21:00</view> -->
+      </view>
+    </view>
+    <view wx:if="{{lineList.length==0}}">
+      <component_emptydata bordered="{{false}}"/>
+    </view>
+  </view>
+</view>

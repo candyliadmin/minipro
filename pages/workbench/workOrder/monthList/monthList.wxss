@@ -1,0 +1,29 @@
+.statistic-num{
+  margin: 20rpx 0;
+  background-color: #fff;
+  padding: 60rpx;
+}
+.statistic-item{
+  text-align: center;
+  font-size: 34rpx;
+  position: relative;
+  width: 50%;
+  line-height: 1;
+}
+.statistic-item.bordered .statistic-type::after{
+  content: '';
+  position: absolute;
+  height: 100%;
+  border-right: 1rpx solid #DDDDDD;
+  right: 0;
+}
+.statistic-item image{
+  width: 81rpx;
+  height: 88rpx;
+}
+.statistic-type{
+  color: #FF8300;
+  display: inline-block;
+  font-size: 56rpx;
+  margin-bottom: 20rpx;
+}

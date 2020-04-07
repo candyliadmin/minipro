@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "巴滴云",
+  "usingComponents": {},
+  "navigationBarTextStyle": "white",
+  "navigationBarBackgroundColor": "#0093B3",
+  "backgroundColor":"#1973B1",
+  "disableScroll":true
+}

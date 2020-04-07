@@ -1,0 +1,32 @@
+<!--pages/vehiclePosition/vehicleDetail/vehicleDetail.wxml-->
+<view class="page">
+  <view class="list-info">
+    <view>平均车速：{{vehicleDetail.speed}}</view>
+    <view>行驶方向：{{vehicleDetail.direction}}</view>
+    <view>发车时间：{{vehicleDetail.startTime}}</view>
+  </view>
+  <view class='bottom-line'></view>
+  <view class='scroll-view-box'>
+    <scroll-view scroll-y class='scroll-view'>
+      <view>
+        <view wx:for="{{vehicleDetail.paths}}" wx:key="*this">
+          <view class="">
+            <view class="path-item-circle">
+              <view class="siteInfo-circle siteInfo-circle-green"></view>
+            </view>
+            <view class="path-item-name">{{item.name}}</view>
+          </view>
+          <view class="path-item-line" wx:if="{{index !== vehicleDetail.paths.length - 1 }}">
+          </view>
+        </view>
+        <view class="current-pos">
+          <view class="path-item-circle">
+            <view class="siteInfo-circle siteInfo-circle-red"></view>
+          </view>
+          <view class="path-item-name current-vehicle">
+            <image class="weui-flex__item" src='{{imgUrl}}/operation/receipt/bus.png' />粤JSA9</view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

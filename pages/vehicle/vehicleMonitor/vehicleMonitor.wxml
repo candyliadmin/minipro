@@ -1,0 +1,21 @@
+<!--pages/vehicle/vehicleMonitor/vehicleMonitor.wxml-->
+<view class="gray-page border-top-10">
+  <view class="block-content-list text-center">
+    <image style="width:100%;height:405rpx;padding:15rpx 0;" mode="widthFix" src="{{imgUrl}}/temp/cheliangjk_sj01.png"></image>
+    <view class="gray-color">视角1</view>
+    <view class="flex__space-around">
+      <view style="width:49%;">
+        <image style="width:100%;height:280rpx;padding:15rpx 0;" src="{{imgUrl}}/temp/cheliangjk_sj02.png"></image>
+        <view class="gray-color">视角2</view>
+      </view>
+      <view style="width:49%;">
+        <image style="width:100%;height:280rpx;padding:15rpx 0;" src="{{imgUrl}}/temp/cheliangjk_sj03.png"></image>
+        <view class="gray-color">视角3</view>
+      </view>
+    </view>
+    <!-- <image style="width:55%;height:42rpx;padding:82rpx 0 98rpx 0;" mode="widthFix" src="{{imgUrl}}/temp/monitor-text.png"></image>
+  <image class="empty-img" mode="widthFix" src="{{imgUrl}}/temp/monitor-img.png"></image>
+  <view class="gray-color">功能即将上线</view>
+  <view class="gray-color">敬请期待！</view> -->
+  </view>
+</view>

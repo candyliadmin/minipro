@@ -1,0 +1,51 @@
+.receipts-tab {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  justify-items: center;
+  font-size: 28rpx;
+  line-height: 2;
+  border-bottom: 10rpx solid #f2f2f2;
+  padding-top: 27rpx;
+}
+
+.receipts-tab-item {
+  padding: 0 34rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  padding-bottom: 20rpx;
+  border-bottom-left-radius: 4rpx;
+  border-bottom-right-radius: 4rpx;
+  position: relative;
+}
+
+.receipts-tab-item.active,.receipts-tab-item-hover {
+  color: #3B78D6;
+}
+.receipts-tab-item.active::after,.receipts-tab-item-hover::after{
+  content: '';
+  border-bottom: 4rpx solid #3B78D6;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.weui-badge {
+  display: inline-block;
+  padding: 0.15em 0.4em;
+  min-width: 8px;
+  border-radius: 18px;
+  background-color: #d81e06;
+  color: #fff;
+  line-height: 1.2;
+  text-align: center;
+  font-size: 12px;
+  vertical-align: middle;
+}
+.weui-badge_dot {
+  padding: 0.4em;
+  min-width: 0;
+}

@@ -1,0 +1,48 @@
+<view>
+  <wxs module="m1">
+    var numberToFixed = function(n) {
+      n = n ? n.toFixed(2) : 0.00;
+      return n;
+    }
+    var format = function(d) {
+      var temp = d && d.indexOf('-') != -1 ? d.split('-') : [];
+      var str = '';
+      str += temp[0] ? temp[0] + '年' : '';
+      str += temp[1] ? temp[1] + '月' : '';
+      str += temp[2] ? temp[2] + '日' : '';
+      return str ? str : d;
+    }
+    module.exports.formatDate = format;
+    module.exports.toFixed = numberToFixed;
+  </wxs>
+  <view class="title-bg">
+    <image src="{{imgUrl}}/overview/title-bg.png"></image>
+    <view class="title-content">
+      <view class="vehicle-income-title">{{m1.formatDate(date)}}</view>
+      <view class="block-title">各线路结算金额汇总</view>
+    </view>
+  </view>
+  <view class="gray-page">
+    <view class="block-content-list">
+      <view class="settlement-list" wx:if="{{incomeList.length>0}}">
+        <view wx:for="{{incomeList}}" class="line-item operation-line" wx:key="index">
+          <navigator url="../byVehicle/byVehicle?date={{date}}&&routeId={{item.routeId}}" class="border-bottom" style="padding:24rpx 0;">
+            <view class="line-item-wrap">
+              <view class="line-item-title">
+                <image class="bdicon" mode="widthFix" src="{{imgUrl}}/common/icon/line-icon.png"></image>
+                {{item.routeName}}
+                <view class="btn-border fr">
+                  <text class="orange-color">￥{{item.royaltyAmountSum}}</text>
+                  <i class="iconfont icon-right lightgray-color spantext"></i>
+                </view>
+              </view>
+            </view>
+          </navigator>
+        </view>
+      </view>
+      <view wx:if="{{incomeList.length==0}}">
+        <component_emptydata bordered="{{false}}" small="{{true}}" />
+      </view>
+    </view>
+  </view>
+</view>

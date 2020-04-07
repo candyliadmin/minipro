@@ -1,0 +1,4 @@
+@import  '../cashWithdrawal.wxss';
+.cash-info{
+  margin-top: 14rpx;
+}

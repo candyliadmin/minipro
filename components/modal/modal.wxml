@@ -1,0 +1,18 @@
+<view class='mask' hidden='{{!show}}' bindtap='_clickMask' animation="{{animationData}}">
+  <view class="modal-box {{ show ? 'fadeIn' : ''}}">
+    <view class='modal-flex-box'>
+      <view class='modal-header'>
+        <slot name="header" />
+      </view>
+      <view class='modal-body'>
+        <scroll-view scroll-y class='main-content'>
+          <slot name="body" />
+        </scroll-view>
+      </view> 
+      <view class='modal-footer'>
+        <view class='cancel-btn modal-btn' bindtap='_cancel' wx:if="{{showCancel}}">{{cancleText}}</view>
+        <view class='confirm-btn modal-btn' bindtap='_confirm'>{{confirmText}}</view>
+      </view>
+    </view>
+  </view>
+</view>

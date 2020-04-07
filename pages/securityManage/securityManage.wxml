@@ -1,0 +1,7 @@
+<!--pages/securityManage/securityManage.wxml-->
+<view class="block-content-list margin-t-10 text-center fix-page" >
+  <image style="width:50%;height:40rpx;padding:82rpx 0 42rpx 0;" mode="widthFix" src="{{imgUrl}}/temp/security-text.png"></image>
+  <image class="empty-img" mode="widthFix" src="{{imgUrl}}/temp/security-img.png"></image>
+  <view class="gray-color">功能即将上线</view>
+  <view class="gray-color">敬请期待！</view>
+</view>

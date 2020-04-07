@@ -1,0 +1,93 @@
+/* pages/enterpriseAccount/bill/billDetail/billDetail.wxss */
+.onedetail-top {
+    padding: 20rpx 0;
+}
+.titleicon{
+  width: 108rpx;
+  height: 108rpx;
+}
+
+.onedetail-title {
+    font-size: 50rpx;
+}
+
+.weui-form-preview__label {
+    font-size: 24rpx;
+}
+
+.weui-form-preview__value {
+    color: #333;
+    font-size: 24rpx;
+}
+
+.weui-form-preview:after {
+    border-bottom: none;
+}
+.withdrawal {
+    color: rgba(236, 85, 25, 1);
+}
+
+.fareClearing {
+    color: rgba(255, 160, 0, 1);
+}
+
+.withdrawalFailure {
+    color: rgba(0, 0, 0, 1);
+}
+
+.weui-form-title {
+    font-size: 24rpx;
+    color: #000;
+}
+.bordered-b{
+  border-bottom: 1rpx solid rgba(0,0,0,.1);
+  margin-bottom: 20rpx;
+}
+.process-success {
+  padding: 40rpx 0 40rpx 40rpx;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.process-step {
+  display: flex;
+  align-items: center;
+}
+
+.process-1 {
+  width: 24rpx;
+  height: 24rpx;
+  margin: 0 7rpx;
+  border-radius: 12rpx;
+  background: rgba(81, 185, 0, 1);
+}
+
+.process-border-1 {
+  border-left: 5rpx dotted #51B900;
+  height: 50rpx;
+  margin-left: 16rpx;
+}
+
+.process-3 {
+  width: 24rpx;
+  height: 24rpx;
+  margin: 0 7rpx;
+  border-radius: 12rpx;
+  background: rgba(221, 221, 221, 1);
+}
+
+.process-border-3 {
+  border-left: 5rpx dotted #DDDDDD;
+  height: 50rpx;
+  margin-left: 16rpx;
+}
+.process-3.active{
+  background: rgba(81, 185, 0, 1);
+}
+.process-border-3.active{
+  border-left: 5rpx dotted #51B900;
+}
+.cash-info{
+  margin-top: 14rpx;
+}

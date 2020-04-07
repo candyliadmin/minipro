@@ -1,0 +1,43 @@
+<view>
+  <view class="search-header">
+    <SearchBar id="SearchBar" placeholderMsg="请输入姓名或手机号" searchstr="{{searchstr}}" bind:searchList="searchList" bind:endsearchList="endsearchList" bind:cancelsearch="cancelsearch" bind:activity_clear="activity_clear" bind:addhandle="addhandle">
+    </SearchBar>
+  </view>
+  <view class="padding-page  search-content" wx:if="{{driveAndPassenger.length>0}}" style="padding-top:120rpx;">
+    <navigator url="info/info?id={{item.partyId}}" wx:for="{{driveAndPassenger}}" class="line-item border-radius margin-b-10 driver-item" wx:key="partyId">
+      <view class="code-img" data-uid="{{item.partyId}}" data-index="{{index}}" catchtap="gotoCode">
+        <image src="{{imgUrl}}/page/codeshedule/code.png" mode="widthFix"></image>
+      </view>
+      <view class="line-item-wrap">
+        <view class="line-item-title flex__space-between">
+          <view class="flex_start margin-b-10">
+            <view wx:if="{{item.gender=='M'}}" class="default-style radius">
+              <image class="bdicon" mode="widthFix" src="{{imgUrl}}/common/man-head.png"></image>
+              <image class="gender-icon" mode="widthFix" src="{{imgUrl}}/common/icon/man-icon.png"></image>
+            </view>
+            <view wx:if="{{item.gender=='F'}}"  class="default-style radius">
+              <image class="bdicon" mode="widthFix" src="{{imgUrl}}/common/woman-head.png"></image>
+              <image class="gender-icon" mode="widthFix" src="{{imgUrl}}/common/icon/woman-icon.png"></image>
+            </view>
+            <view class="padding-l-20 bold">{{item.name || '未设置姓名'}}</view>
+            <block wx:for="{{item.position}}" wx:key="index" wx:if="{{item === 'DRIVER' || item === 'ATTENDANT'}}">
+              <view class="linetype-tag {{item=='ATTENDANT'?'lightorange-color':''}} margin-l-10">{{roleType[item]}}</view>
+            </block>
+          </view>
+        </view>
+        <view class="flex__space-between">
+          <view>
+            <!-- <view class="line-row spantext lightgray-color" wx:if="{{item.isdriver}}">驾驶证号：{{item.licenceCode || ''}}</view> -->
+            <view class="line-row spantext lightgray-color">{{item.phoneNumber || ''}}</view>
+          </view>
+          <view class="btn-border spantext" catchtap="showStatistic" data-uid="{{item.partyId}}" data-index="{{index}}" >工单统计
+            <i class="iconfont icon-right"></i>
+          </view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <view wx:if="{{driveAndPassenger.length==0}}">
+    <component_emptydata bordered="{{false}}"/>
+  </view>
+</view>

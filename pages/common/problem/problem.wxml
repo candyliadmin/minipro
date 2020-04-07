@@ -1,0 +1,36 @@
+<view class="gray-page border-top-10">
+  <view class="block-content-list">
+    <view class="border-bottom block-title problem-title">余额提现规则</view>
+    <view class="flex_start" style="padding-top:56rpx;">
+      <image src="{{imgUrl}}/page/account/guize.png" class="problem-img"></image>
+      <view class="problem-name bold">提现规则</view>
+    </view>
+    <view class="problem-content spantext">
+      <view class="flex_start margin-t-10">
+        <view class="gray-color">微信账户提现：</view>
+      </view>
+      <view class="flex_start margin-t-10">
+        <view class="gray-color">办理时间</view>
+        <view class="padding-l-20">工作日 9:00～18:00</view>
+      </view>
+      <view class="flex_start margin-t-10">
+        <view class="gray-color">单笔单日限额</view>
+        <view class="padding-l-20">5000元</view>
+      </view>
+      <view class="flex_start margin-t-10">
+        <view class="gray-color">单日提现次数限制</view>
+        <view class="padding-l-20">5次</view>
+      </view>
+      <view class="flex_start margin-t-20">
+        <view class="lightgray-color">暂不支持支付宝账户和银行卡账户</view>
+      </view>
+      <!-- <view class="flex_start margin-t-10">
+        <view class="gray-color">手续费</view>
+        <view class="padding-l-20">{{serviceCharge}}元/笔</view>
+      </view> -->
+    </view>
+  </view>
+  <button class='btn-kf' open-type='contact'>
+    <image src="{{imgUrl}}/page/account/kefu.png"></image>
+  </button>
+</view>

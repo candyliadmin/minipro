@@ -1,0 +1,27 @@
+var numberToFixed = function (n) {
+  n = +n ? n.toFixed(2) : '0.00';
+  return n;
+}
+var dateToStr = function (d,type,char) {
+  var str = '';
+  var arr = char ? d.split(char):d.split('-')
+  switch(type){
+    case 'day':
+      str = arr[1]+'月'+arr[2]+'日';
+      break;
+    case 'month':
+      str = arr[0] + '年' + arr[1] + '月';
+      break;
+    case 'year':
+      str = arr[0] + '年';
+      break;
+    default:
+      str = arr[0] + '年' + arr[1] + '月' + arr[2] + '日';
+      break;
+  }
+  return str;
+}
+module.exports = {
+  toFixed: numberToFixed,
+  dateToStr: dateToStr
+};

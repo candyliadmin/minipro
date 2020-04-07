@@ -1,0 +1,30 @@
+
+.account-block{
+  padding: 12rpx 50rpx;
+  background-color: #fff;
+}
+.account-item{
+  text-align: center;
+  position: relative;
+  padding: 24rpx 0;
+}
+.account-item image{
+  width: 68rpx;
+  height: 68rpx;
+}
+.money{
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #E87206;
+}
+.weui-cell_example::before{
+  left: 52px;
+}
+.attention {
+    padding: 32rpx;
+    font-size: 24rpx;
+    color: #6FB600;
+    text-align: center;
+    text-decoration: underline;
+    text-underline-position: auto;
+}
